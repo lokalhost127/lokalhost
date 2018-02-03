@@ -17,15 +17,42 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-      switch ($guard) {
-        case 'admin':
-          if (Auth::guard($guard)->check()) {
-            return redirect()->route('admin.dashboard');
-          }
-          break;
 
+        switch ($guard) {
+        case 'admin':
+            echo("case admin");
+          if (Auth::guard($guard)->check() && !Auth::guard('web')->check() ) {
+              echo("true");
+              echo("ADMIN");
+              return redirect()->route('admin.dashboard');
+
+          }
+          elseif (Auth::guard('web')->check())
+          {
+              echo("OMG YOU WERE LOGGED IN AS USER!!!");
+              return redirect('/locations');
+          }
+
+          break;
+          case 'web':
+              print("case web");
+              if(Auth::guard($guard)->check() && !Auth::guard('admin')->check() )
+              {
+                  echo("true");
+                  echo("LOGGED AS USER");
+//                  return redirect()->route('/locations');
+              }
+              elseif (Auth::guard('admin')->check())
+              {
+                  echo("OMG YOU WERE LOGGED IN AS ADMIN!!!");
+                  return redirect()->route('admin.dashboard');
+              }
+
+              break;
         default:
+            echo("case guest");
           if (Auth::guard($guard)->check()) {
+              echo("GUEST");
               return redirect('/home');
           }
           break;

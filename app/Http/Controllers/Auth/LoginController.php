@@ -33,9 +33,9 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct()//smento
     {
-        $this->middleware('guest', ['except' => ['logout', 'userLogout']]);
+        $this->middleware('guest:web', ['except' => ['logout', 'userLogout']]);
     }
 
     public function userLogout()
