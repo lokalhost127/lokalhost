@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
+
 @section('content')
+
     <div class="col-md-4 mx-auto">
         <div class="form-box">
             <div class="form-top">

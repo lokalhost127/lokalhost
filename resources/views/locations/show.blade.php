@@ -49,7 +49,16 @@
 
             <ul class="list-group">
                 @foreach($location->comments as $comment)
+
                     <li class="list-group-item">
+                        @if($comment->user_id == Auth::user()->id)
+                            <form action="{{url('/locations/' . $location->id . '/comments', [$comment->id])}}"
+                                  method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="submit" class="close" value="&times;"/>
+                            </form>
+                        @endif
                         {{$comment->user -> name}} commented
                         <strong>
                             {{$comment-> created_at ->  diffForHumans()}}
@@ -64,15 +73,28 @@
         </div>
         <div class="card">
             <div class="card-block">
+
                 <form method="post" action="/locations/{{$location->id}}/comments">
                     {{csrf_field()}}
                     <div class="form-group">
                      <textarea name="body" placeholder="Your comment here." class="form-control">
                      </textarea>
                     </div>
+                    @if(Auth::guard('web')->check())
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit"> Add Comment</button>
                     </div>
+                        @elseif(Auth::guard('admin')->check())
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" disabled> Add Comment</button>
+                        </div>
+                        @else
+                        <div class="form-group">
+                            <a href="/login">
+                             <button class="btn btn-primary" type="button"> Add Comment</button>
+                            </a>
+                        </div>
+                    @endif
                 </form>
                 @if ($errors->any())
                     <div class="alert alert-danger">

@@ -102,7 +102,7 @@ class EventController extends Controller
         Table::where('event_id', $event->id)->delete();
         $event->delete();
         $request->session()->flash('message', 'Successfully deleted the event!');
-        return redirect('/admin/locations/' . $location->id . '/events');
+        return back();
     }
 
 
