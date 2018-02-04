@@ -29,9 +29,15 @@
 
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
+                        @if( $location->id!="")
                         <a href="{{ URL::to('/admin/locations/' . $location->id . '/events/'. $event->id . '/edit') }}">
                             <button type="button" class="btn btn-warning">Edit</button>
                         </a>
+                        @else
+                            <a href="{{ URL::to('/events/'. $event->id . '/edit') }}">
+                                <button type="button" class="btn btn-warning">Edit</button>
+                            </a>
+                        @endif
                         <form action="{{url('/admin/locations/' . $location->id . '/events', [$event->id])}}"
                               method="POST">
                             <input type="hidden" name="_method" value="DELETE">
