@@ -49,9 +49,21 @@
                      <textarea name="body" placeholder="Your comment here." class="form-control">
                      </textarea>
                     </div>
+                    @if(Auth::guard('web')->check())
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit"> Add Comment</button>
                     </div>
+                        @elseif(Auth::guard('admin')->check())
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" disabled> Add Comment</button>
+                        </div>
+                        @else
+                        <div class="form-group">
+                            <a href="/login">
+                             <button class="btn btn-primary" type="button"> Add Comment</button>
+                            </a>
+                        </div>
+                    @endif
                 </form>
                 @if ($errors->any())
                     <div class="alert alert-danger">
