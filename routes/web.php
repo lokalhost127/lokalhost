@@ -9,7 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,11 +22,12 @@ Route::resource('locations', 'LocationController');
 Route::resource('locations.events', 'EventController');
 Route::resource('events', 'EventController');
 Route::resource('locations.events.tables', 'TableController');
+Route::resource('events.tables', 'TableController');
 Route::resource('locations.comments', 'CommentsController');
 Route::resource('locations.ratings', 'RatingsController');
 Route::get('/reservations', 'MyReservationsController@index');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'] ,function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
