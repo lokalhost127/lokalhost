@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 
-
-@if (Auth::guard('admin')->check())
 @section('content')
+    @if (Auth::guard('admin')->check())
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
@@ -43,35 +42,36 @@
         @endforeach
         </tbody>
     </table>
-@endsection
-@else
-@section('content')
-    @if (Session::has('message'))
-        <div class="alert alert-info">{{ Session::get('message') }}</div>
-    @endif
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Location Title</th>
-            <th scope="col">Location Description</th>
-            <th scope="col">Address</th>
-            <th scope="col">Capacity</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($locations as $location)
+    @else
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
+        <table class="table">
+            <thead class="thead-dark">
             <tr>
-                <th scope="row">{{$location->id}}</th>
-                <td><a href="locations/{{$location->id}}">{{$location->name}}</a></td>
-                <td>{{$location->description}}</td>
-                <td>{{$location->address }}</td>
-                <td>{{$location->capacity }}</td>
-
+                <th scope="col">#</th>
+                <th scope="col">Location Title</th>
+                <th scope="col">Location Description</th>
+                <th scope="col">Address</th>
+                <th scope="col">Capacity</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($locations as $location)
+                <tr>
+                    <th scope="row">{{$location->id}}</th>
+                    <td><a href="locations/{{$location->id}}">{{$location->name}}</a></td>
+                    <td>{{$location->description}}</td>
+                    <td>{{$location->address }}</td>
+                    <td>{{$location->capacity }}</td>
+
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
+
 @endsection
 
-@endif
+
+

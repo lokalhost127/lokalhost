@@ -1,8 +1,6 @@
 @extends('layouts.app')
-
-@if (Auth::guard('admin')->check())
-
 @section('content')
+    @if(Auth::guard('admin')->check())
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
@@ -44,45 +42,44 @@
         @endforeach
         </tbody>
     </table>
-@endsection
 
-@else
-
-@section('content')
-    @if (Session::has('message'))
-        <div class="alert alert-info">{{ Session::get('message') }}</div>
-    @endif
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Event Name</th>
-            <th scope="col"> From</th>
-            <th scope="col"> To</th>
-            <th scope="col">Price</th>
-            <th scope="col">Actions</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($events as $event)
+    @else
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
+        <table class="table">
+            <thead class="thead-dark">
             <tr>
-                <th scope="row">{{$event->id}}</th>
-                <td> {{$event-> name}}</td>
-                <td>{{$event->from}}</td>
-                <td>{{$event->to }}</td>
-                <td>{{$event->price }}</td>
-                <td>
-                    <a href="events/{{$event->id}}/tables">
-                        <button type="button" class="btn btn-primary"> Reserve </button>
-                    </a>
-                </td>
+                <th scope="col">#</th>
+                <th scope="col">Event Name</th>
+                <th scope="col"> From</th>
+                <th scope="col"> To</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($events as $event)
+                <tr>
+                    <th scope="row">{{$event->id}}</th>
+                    <td> {{$event-> name}}</td>
+                    <td>{{$event->from}}</td>
+                    <td>{{$event->to }}</td>
+                    <td>{{$event->price }}</td>
+                    <td>
+                        <a href="events/{{$event->id}}/tables">
+                            <button type="button" class="btn btn-primary"> Reserve</button>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+    @endif
+
 @endsection
 
-@endif
 
 
