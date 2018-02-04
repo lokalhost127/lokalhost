@@ -25,7 +25,7 @@
         color: white !important;
     }
 </style>
-<body style="background: #2787b2 url({{asset('assets/img/backgrounds/1.jpg')}}) ">
+<body style="background: #445e83 url({{asset('assets/img/backgrounds/1.jpg')}}) ">
 <div id="app">
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(45,56,75,0.92);">

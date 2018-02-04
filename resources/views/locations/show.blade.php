@@ -1,31 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Showing Location {{ $location->name }}</h1>
+    <div class="container px-1 mx-6">
+        {{--<h1>Showing Location {{ $location->name }}</h1>--}}
+        <br>
+        <div class="row">
+            <div class="col-md-3 text-center pr-4 text-light" style="line-height: 1.3; font-size: 15px;">
+                <br><br>
+                <p class="h3 text-uppercase">{{ $location->name }}</p><br>
+                <p class="text-justify" >{{ $location->description }}</p>
+                <p class="text-left"><strong>Location Address:</strong> {{ $location->address }}</p>
+                <p class="text-left"><strong>Capacity:</strong> {{ $location->capacity }} </p>
+                <br><br><br>
+                    <form action="/locations/{{$location->id}}/ratings" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <label>Rating
+                            <input type="number" name="star" max="5" min="1">
+                            <button class="btn btn-primary" type="submit"> Add Rating</button>
+                        </label>
+                    </form>
+                    <div class="row">
 
-        <div class="jumbotron text-center">
-            <p>
-                <strong>Location Name:</strong> {{ $location->name }}<br>
-                <strong>Location Address:</strong> {{ $location->address }}<br>
-                <strong>Description:</strong> {{ $location->description }} <br>
-                <strong>Capacity:</strong> {{ $location->capacity }} <br>
-                <strong>Rating:</strong> {{ $location->rating }} <br>
+                    </div>
 
-            </p>
+            </div>
+            <div class="col-md-9"  style="">
+                <img src="{{asset('assets/img/peshtani-map.jpg')}}">
+            </div>
+
         </div>
 
+        <div class="row">
+            <div class="col-md-3 text-center pr-4" style="color: white ;line-height: 1.3; font-size: 15px;">
 
-        <form action="/locations/{{$location->id}}/ratings" method="POST">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <label>Rating
-                <input type="number" name="star" max="5" min="1">
-                <button class="btn btn-primary" type="submit"> Add Rating</button>
-            </label>
-        </form>
-        <a href="{{$location->id}}/events">
-            <button class="btn btn-primary" type="submit">Види Настани</button>
-        </a>
+            </div>
+            <div class="col-md-9 mt-3 text-right"  >
+                <a href="{{$location->id}}/events">
+                    <button class="btn btn-primary" type="submit">Види Настани</button>
+                </a>
+                <a href="">
+                    <button class="btn btn-primary" type="submit">Види Коментари</button>
+                </a>
+            </div>
+        </div>
+
         <hr>
         <div id="comments">
 
