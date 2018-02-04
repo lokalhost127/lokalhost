@@ -23,13 +23,13 @@
                 <td>{{$table-> event_id }}</td>
                 <th>
                     @if (Auth::user()=="")
-                            @if($table->reserved == true)
-                                <input type="submit" disabled class="btn btn-danger" value="Reserve"/>
-                            @else
-                                <a href="/login">
-                                    <input type="submit" class="btn btn-danger" value="Reserve"/>
-                                </a>
-                            @endif
+                        @if($table->reserved == true)
+                            <input type="submit" disabled class="btn btn-danger" value="Reserve"/>
+                        @else
+                            <a href="/login">
+                                <input type="submit" class="btn btn-danger" value="Reserve"/>
+                            </a>
+                        @endif
                     @else
                         <form action="{{url('locations/' . $location->id . '/events/' . $event->id . '/tables' , [$table->id])}}"
                               method="POST">

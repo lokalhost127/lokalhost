@@ -6,7 +6,7 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="name">Location Name</label>
-            <input type="text" class="form-control" id="locationName"  name="name">
+            <input type="text" class="form-control" id="locationName" name="name">
         </div>
         <div class="form-group">
             <label for="description">Location Description</label>
