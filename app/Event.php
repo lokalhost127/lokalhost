@@ -15,7 +15,7 @@ class Event extends Model
     }
 
 
-    public function table()
+    public function tables()
     {
         return $this->hasMany(Table::class);
     }

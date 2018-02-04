@@ -31,7 +31,15 @@
 
             <ul class="list-group">
                 @foreach($location->comments as $comment)
+
                     <li class="list-group-item">
+                        <form action="{{url('/locations/' . $location->id . '/comments', [$comment->id])}}"
+                              method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="close" value="&times;"/>
+                        </form>
+
                         {{$comment->user -> name}} commented
                         <strong>
                             {{$comment-> created_at ->  diffForHumans()}}
@@ -46,6 +54,7 @@
         </div>
         <div class="card">
             <div class="card-block">
+
                 <form method="post" action="/locations/{{$location->id}}/comments">
                     {{csrf_field()}}
                     <div class="form-group">
