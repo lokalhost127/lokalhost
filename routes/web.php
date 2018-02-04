@@ -22,6 +22,7 @@ Route::resource('events', 'EventController');
 Route::resource('locations.events.tables', 'TableController');
 Route::resource('locations.comments', 'CommentsController');
 Route::resource('locations.ratings', 'RatingsController');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'] ,function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -29,6 +30,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'] ,function () {
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::resource('locations', 'LocationController');
     Route::resource('locations.events', 'EventController');
+
+
     // Password reset routes
     Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
     Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
