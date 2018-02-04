@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -22,6 +21,5 @@
     <a href="{{ URL::to('/admin/locations') }}">
         <button type="button" class="btn btn-primary"> Your Locations </button>
     </a>
-</div>
 </div>
 @endsection

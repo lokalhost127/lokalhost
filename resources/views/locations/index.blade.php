@@ -1,13 +1,10 @@
 @extends('layouts.app')
-
-
-
 @if (Auth::guard('admin')->check())
 @section('content')
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
-    <table class="table">
+   {{-- <table class="table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -42,7 +39,23 @@
             </tr>
         @endforeach
         </tbody>
-    </table>
+    </table>--}}
+    @foreach($locations as $location)
+    <div class="card text-xs-center">
+        <div class="card-header">
+            IMAGE
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{$location->name}}</h4>
+            <p class="card-text">{{$location->address }}</p>
+            <p class="card-text">{{$location->description }}</p>
+            <a href="locations/{{$location->id}}" class="btn btn-primary">Види локал</a>
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+    </div>
+    @endforeach
 @endsection
 @else
 @section('content')
@@ -73,5 +86,4 @@
         </tbody>
     </table>
 @endsection
-
 @endif
