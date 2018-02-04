@@ -30,92 +30,93 @@
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(45,56,75,0.92);">
         <div class=" container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-        </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+            </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav col-md-8">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ URL::to('/locations') }}">Локали</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ URL::to('/events') }}"> Настани </a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav col-md-8">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ URL::to('/locations') }}">Локали</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ URL::to('/events') }}"> Настани </a>
+                    </li>
+                </ul>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="my-2 my-lg-0">
+                <!-- Right Side Of Navbar -->
+                <ul class="my-2 my-lg-0">
 
-                @if (!Auth::guard('web')->check() && !Auth::guard('admin')->check())                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Најава
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ url('/login') }}">Login as User</a>
-                                    <a class="dropdown-item" href="{{ url('/admin/login') }}">Login as Admin</a>
-                                </div>
-                            </div>
-                        </li>&nbsp;
-                        <a class="btn btn-info"href="{{ route('register') }}">Регистрација</a>
-                    </ul>
-                @elseif(Auth::guard('admin')->check())
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{Auth::guard('admin')-> user() -> name }} <span class="caret"></span>
-                                </button>
-
-                                <div class="dropdown-menu" role="menu">
-                                    <div class="dropdown-item">
-                                        <a class="dropdown-item" href="{{ route('logout')}}"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                              style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                    @if (!Auth::guard('web')->check() && !Auth::guard('admin')->check())
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Најава
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ url('/login') }}">Login as User</a>
+                                        <a class="dropdown-item" href="{{ url('/admin/login') }}">Login as Admin</a>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-                @elseif(Auth::guard('web')->check())
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </button>
+                            </li>&nbsp;
+                            <a class="btn btn-info" href="{{ route('register') }}">Регистрација</a>
+                        </ul>
+                    @elseif(Auth::guard('admin')->check())
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{Auth::guard('admin')-> user() -> name }} <span class="caret"></span>
+                                    </button>
 
-                                <div class="dropdown-menu" role="menu">
-                                    <div class="dropdown-item">
-                                        <a class="dropdown-item" href="{{ route('logout')}}"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                              style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                                    <div class="dropdown-menu" role="menu">
+                                        <div class="dropdown-item">
+                                            <a class="dropdown-item" href="{{ route('logout')}}"
+                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                  style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-                @endif
-            </ul>
-        </div>
+                            </li>
+                        </ul>
+                    @elseif(Auth::guard('web')->check())
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </button>
+
+                                    <div class="dropdown-menu" role="menu">
+                                        <div class="dropdown-item">
+                                            <a class="dropdown-item" href="{{ route('logout')}}"
+                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                  style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    @endif
+                </ul>
+            </div>
         </div>
     </nav>
 

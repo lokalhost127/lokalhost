@@ -30,20 +30,30 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         @if( $location->id!="")
-                        <a href="{{ URL::to('/admin/locations/' . $location->id . '/events/'. $event->id . '/edit') }}">
-                            <button type="button" class="btn btn-warning">Edit</button>
-                        </a>
+                            <a href="{{ URL::to('/admin/locations/' . $location->id . '/events/'. $event->id . '/edit') }}">
+                                <button type="button" class="btn btn-warning">Edit</button>
+                            </a>
+
+                            <form action="{{url('/admin/locations/' . $location->id . '/events', [$event->id])}}"
+                                  method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                            </form>
+
                         @else
                             <a href="{{ URL::to('/events/'. $event->id . '/edit') }}">
                                 <button type="button" class="btn btn-warning">Edit</button>
                             </a>
+
+                            <form action="{{url('/events', [$event->id])}}"
+                                  method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                            </form>
                         @endif
-                        <form action="{{url('/admin/locations/' . $location->id . '/events', [$event->id])}}"
-                              method="POST">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="submit" class="btn btn-danger" value="Delete"/>
-                        </form>
+
                     </div>
                 </td>
             </tr>
@@ -80,7 +90,7 @@
                 <td>{{$event->price }}</td>
                 <td>
                     <a href="events/{{$event->id}}/tables">
-                        <button type="button" class="btn btn-primary"> Reserve </button>
+                        <button type="button" class="btn btn-primary"> Reserve</button>
                     </a>
                 </td>
             </tr>

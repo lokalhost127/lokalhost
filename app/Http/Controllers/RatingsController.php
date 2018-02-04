@@ -19,6 +19,18 @@ class RatingsController extends Controller
             'user_id' => Auth::id()
 
         ]);
+
+
+        if ($location->rating == 0) {
+            $rating = $request->star;
+        } else {
+            $rating = ($location->rating + $request->star) / 2;
+
+        }
+
+        $location->rating = $rating;
+        $location->save();
+
         return back();
     }
 }
