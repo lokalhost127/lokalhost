@@ -1,3 +1,4 @@
+<link href="{{ asset('css/cards.css') }}" rel="stylesheet">
 @extends('layouts.app')
 @if (Auth::guard('admin')->check())
 @section('content')
