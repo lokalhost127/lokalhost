@@ -10,7 +10,7 @@
                         <h3>Најави се!</h3>
                         <p>Внеси ја email адресата и лозинката.</p>
                     </div>
-                    <div class="form-top-right">
+                    <div class="form-top-right" style="margin-top: 17px">
                         <i class="fa fa-lock"></i>
                     </div>
                 </div>
