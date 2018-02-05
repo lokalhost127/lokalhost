@@ -8,15 +8,17 @@
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
     @if( $location->id!="")
-    <div>
-        <a class="add-local" href="{{ URL::to('/admin/locations/' . $location->id . '/events/create') }}" title="Креирај нов локал"><i class="fa fa-plus-circle"></i></a>
-    </div>
+        <div>
+            <a class="add-local" href="{{ URL::to('/admin/locations/' . $location->id . '/events/create') }}"
+               title="Креирај нов локал"><i class="fa fa-plus-circle"></i></a>
+        </div>
     @endif
     <div class="container">
         <ul class="event-list">
             <br>
             @foreach($events as $event)
-
+                @if($event->from=="Expired")
+                @else
                 <li>
                     <time>
                         <span class="day">{{ Carbon\Carbon::parse($event->from)->format('d') }}</span>
@@ -25,11 +27,14 @@
                         <span class="time">ALL DAY</span>
                     </time>
                     <div class="info">
-                        <h2 class="title">{{$event->name}}</h2>
+                        <a href="{{ URL::to('/admin/locations/' . $event->location_id . '/events/'. $event->id ) }}">
+                            <h3 class="title">{{$event->name}}</h3>
+                        </a>
                         <p class="desc">Локација: <b>{{$event->location->name}}</b> | Време:
                             <b>{{ Carbon\Carbon::parse($event->from)->format('H:i') }}</b></p>
                         <p class="desc">Цена за влез: <b>{{$event->price}} денари</b></p>
                     </div>
+
                     <div class="social">
                         <ul>
                             @if( $location->id!="")
@@ -60,6 +65,7 @@
                         </ul>
                     </div>
                 </li>
+                @endif
             @endforeach
         </ul>
     </div>
@@ -86,7 +92,9 @@
                         <span class="time">ALL DAY</span>
                     </time>
                     <div class="info">
-                        <h2 class="title">{{$event->name}}</h2>
+                        <a href="{{ URL::to('/locations/' . $event->location_id . '/events/'. $event->id ) }}">
+                            <h3 class="title">{{$event->name}}</h3>
+                        </a>
                         <p class="desc">Локација: <b>{{$event->location->name}}</b> | Време:
                             <b>{{ Carbon\Carbon::parse($event->from)->format('H:i') }}</b></p>
                         <p class="desc">Цена за влез: <b>{{$event->price}} денари</b></p>
@@ -95,11 +103,15 @@
                         <ul>
                             @if($event-> to < $date)
                                 <a href="events/{{$event->id}}/tables">
-                                    <button type="button" disabled class="btn btn-primary" style="margin-top: 35px; margin-bottom: 25px"> Expired</button>
+                                    <button type="button" disabled class="btn btn-primary"
+                                            style="margin-top: 35px; margin-bottom: 25px"> Изминат
+                                    </button>
                                 </a>
                             @else
                                 <a href="events/{{$event->id}}/tables">
-                                    <button type="button" class="btn btn-primary" style="margin-top: 35px; margin-bottom: 25px"> Reserve</button>
+                                    <button type="button" class="btn btn-primary"
+                                            style="margin-top: 35px; margin-bottom: 25px"> Резервирај
+                                    </button>
                                 </a>
                             @endif
                         </ul>
@@ -108,11 +120,5 @@
             @endforeach
         </ul>
     </div>
-
-
-
 @endsection
-
 @endif
-
-

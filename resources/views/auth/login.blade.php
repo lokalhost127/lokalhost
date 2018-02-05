@@ -7,11 +7,11 @@
         <div class="form-box">
             <div class="form-top">
                 <div class="form-top-left">
-                    <h3>Најави се!</h3>
+                    <h3>Најава - Корисник!</h3>
                     <p>Внеси ја email адресата и лозинката.</p>
                 </div>
                 <div class="form-top-right">
-                    <i class="fa fa-lock"></i>
+                    <i class="fa fa-user"></i>
                 </div>
             </div>
             <div class="form-bottom">
@@ -40,10 +40,7 @@
                         @endif
                     </div>
 
-                    <button type="submit" class="btn">Sign in!</button>
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        Forgot Your Password?
-                    </a>
+                    <button type="submit" class="btn btn-primary">Најави се!</button>
                 </form>
             </div>
         </div>
