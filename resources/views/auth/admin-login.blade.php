@@ -7,7 +7,7 @@
             <div class="form-box">
                 <div class="form-top">
                     <div class="form-top-left">
-                        <h3>Најави се!</h3>
+                        <h3>Најава - Хост!</h3>
                         <p>Внеси ја email адресата и лозинката.</p>
                     </div>
                     <div class="form-top-right" style="margin-top: 17px">
@@ -39,11 +39,7 @@
                             @endif
                         </div>
 
-                        <button type="submit" class="btn">Sign in!</button>
-
-                        <a class="btn btn-link" href="{{ route('admin.password.request') }}">
-                            Forgot Your Password?
-                        </a>
+                        <button type="submit" class="btn btn-primary">Најави се!</button>
                     </form>
                 </div>
             </div>

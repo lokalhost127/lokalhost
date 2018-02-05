@@ -9,8 +9,8 @@
         <div class="jumbotron jumbotron-fluid mb-0" style="background-repeat: no-repeat; background-image: url({{asset('assets/img/backgrounds/theme.svg')}})">
             <div class="container">
                 <h1 class="display-3">Lokal Host</h1>
-                <a class="btn btn-danger"href="{{ route('register') }}">РЕЗЕРВИРАЈ</a>
-                <a class="btn btn-warning"href="">БИДИ ХОСТ</a>
+                <a class="btn btn-danger" href="{{ route('register') }}">РЕЗЕРВИРАЈ</a>
+                <a class="btn btn-warning" href="{{ route('register-admin')}}">БИДИ ХОСТ</a>
                 <br>
                 <p class="lead">Резервирајте на вашето омилено место или бидете хост на настани</p>
             </div>

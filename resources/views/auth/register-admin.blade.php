@@ -60,7 +60,7 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <button type="submit" class="btn bt">Регистрирај се!</button>
+                        <button type="submit" class="btn btn-primary">Регистрирај се!</button>
                     </div>
                 </form>
             </div>
