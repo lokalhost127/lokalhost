@@ -18,7 +18,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'job_title',
+        'name', 'email', 'password', 'accepted',
     ];
 
     /**
@@ -35,8 +35,9 @@ class Admin extends Authenticatable
         $this->notify(new AdminResetPasswordNotification($token));
     }
 
-    public function  location(){
-        return $this -> hasMany(Location::class);
+    public function location()
+    {
+        return $this->hasMany(Location::class);
     }
 
 }
