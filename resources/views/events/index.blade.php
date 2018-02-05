@@ -1,10 +1,16 @@
 @extends('layouts.app')
 <link href="{{ asset('css/cards-horizontal.css') }}" rel="stylesheet">
+<link href="{{ asset('css/cards.css') }}" rel="stylesheet">
 @if (Auth::guard('admin')->check())
 
 @section('content')
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
+    @if( $location->id!="")
+    <div>
+        <a class="add-local" href="{{ URL::to('/admin/locations/' . $location->id . '/events/create') }}" title="Креирај нов локал"><i class="fa fa-plus-circle"></i></a>
+    </div>
     @endif
     <div class="container">
         <ul class="event-list">
