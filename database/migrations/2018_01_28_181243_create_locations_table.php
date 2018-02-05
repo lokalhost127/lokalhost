@@ -20,7 +20,6 @@ class CreateLocationsTable extends Migration
             $table->string("address");
             $table->string("description");
             $table->integer("capacity");
-            $table->integer("rating");
             $table->timestamps();
 
         });
