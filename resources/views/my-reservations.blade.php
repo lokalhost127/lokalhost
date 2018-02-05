@@ -7,6 +7,7 @@
     <div class="container">
         <ul class="event-list">
             <br>
+             @if($events == "")
             @foreach($events as $event)
                 <li>
                     <time>
@@ -38,6 +39,9 @@
                     </div>
                 </li>
             @endforeach
+            @else
+            <tr> <td>  Нема резервации </td></tr>
+        @endif
         </ul>
     </div>
 @endsection
