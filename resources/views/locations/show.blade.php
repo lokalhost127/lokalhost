@@ -12,6 +12,8 @@
                 <p class="text-left"><strong>Location Address:</strong> {{ $location->address }}</p>
                 <p class="text-left"><strong>Capacity:</strong> {{ $location->capacity }} </p>
                 <br><br><br>
+
+
                     <form action="/locations/{{$location->id}}/ratings" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <label>Rating
