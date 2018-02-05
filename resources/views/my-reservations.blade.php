@@ -17,16 +17,20 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($events as $event)
-            <tr>
-                <th scope="row">{{$event->event->id}}</th>
-                <td> {{$event->event-> name}}</td>
-                <td>{{$event->event->from}}</td>
-                <td>{{$event->event->to }}</td>
-                <td>{{$event->event->price }}</td>
-                <td>{{$event->id }}</td>
-            </tr>
-        @endforeach
+        @if($events == "")
+            @foreach($events as $event)
+                <tr>
+                    <th scope="row">{{$event->event->id}}</th>
+                    <td> {{$event->event-> name}}</td>
+                    <td>{{$event->event->from}}</td>
+                    <td>{{$event->event->to }}</td>
+                    <td>{{$event->event->price }}</td>
+                    <td>{{$event->id }}</td>
+                </tr>
+            @endforeach
+        @else
+            <tr> <td>  Нема резервации </td></tr>
+        @endif
         </tbody>
     </table>
 @endsection
