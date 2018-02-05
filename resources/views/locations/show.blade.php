@@ -51,7 +51,8 @@
                 @foreach($location->comments as $comment)
 
                     <li class="list-group-item">
-                        @if($comment->user_id == Auth::user()->id)
+
+                        @if(!Auth::user()=="" && $comment->user_id == Auth::user()->id)
                             <form action="{{url('/locations/' . $location->id . '/comments', [$comment->id])}}"
                                   method="POST">
                                 <input type="hidden" name="_method" value="DELETE">

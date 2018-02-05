@@ -89,9 +89,15 @@
                 <td>{{$event->to }}</td>
                 <td>{{$event->price }}</td>
                 <td>
+                    @if($event-> to < $date)
                     <a href="events/{{$event->id}}/tables">
-                        <button type="button" class="btn btn-primary"> Reserve</button>
+                        <button type="button" disabled class="btn btn-primary"> Expired</button>
                     </a>
+                    @else
+                        <a href="events/{{$event->id}}/tables">
+                            <button type="button" class="btn btn-primary"> Reserve</button>
+                        </a>
+                    @endif
                 </td>
             </tr>
         @endforeach
