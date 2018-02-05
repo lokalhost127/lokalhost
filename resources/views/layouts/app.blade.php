@@ -48,10 +48,10 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="my-2 my-lg-0">
+                <ul class="nav list-inline ml-auto">
 
                     @if (!Auth::guard('web')->check() && !Auth::guard('admin')->check())
-                        <ul class="navbar-nav mr-auto">
+                        {{--<ul class="navbar-nav mr-auto">--}}
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"

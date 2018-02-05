@@ -12,11 +12,11 @@
         <div class="container-fluid">
             @foreach($locations as $location)
                 <div class="card card-blue">
-                    <i class="fa fa-arrow-circle-o-down"></i>
+                    <i class="fa fa-photo-circle-o-down"></i>
                     <p class="card-question">{{$location->name}}</p>
                     <div class="card-separator"></div>
                     <p class="card-text"><strong>Адреса: </strong>{{$location->address }}</p>
-                    <p class="card-text"><strong>Опис: </strong>{{$location->description }}</p>
+                    <p class="card-text"><strong>Rating: </strong>{{$location->rating }}</p>
                     <div class="row" style="margin-left: 20px">
                         <div class="col-sx-3">
                             <a href="locations/{{$location->id}}" class="btn btn-sm btn-outline-primary"
@@ -50,7 +50,7 @@
                     <p class="card-question">{{$location->name}}</p>
                     <div class="card-separator"></div>
                     <p class="card-text"><strong>Адреса: </strong>{{$location->address }}</p>
-                    <p class="card-text"><strong>Опис: </strong>{{$location->description }}</p>
+                    <p class="card-text"><strong>Rating: </strong>{{$location->rating }}</p>
                     <a href="locations/{{$location->id}}" class="btn btn-outline-primary">Види локал</a>
                     <div class="card-separator"></div>
                 </div>
