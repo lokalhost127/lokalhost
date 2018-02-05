@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Location;
 use App\Rating;
 use Illuminate\Http\Request;
@@ -13,12 +12,15 @@ class RatingsController extends Controller
     public function store(Request $request, Location $location)
     {
 
-        Rating::create([
-            'star' => $request->star,
-            'location_id' => $location->id,
-            'user_id' => Auth::id()
-
-        ]);
+        Rating::updateOrCreate(
+            [   'user_id' => Auth::id(),
+                'location_id' => $location->id
+            ],
+            [
+                'star' => $request->star,
+                'location_id' => $location->id,
+                'user_id' => Auth::id()
+            ]);
 
 
         if ($location->rating == 0) {

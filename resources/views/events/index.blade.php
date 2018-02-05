@@ -1,65 +1,63 @@
 @extends('layouts.app')
-
+<link href="{{ asset('css/cards-horizontal.css') }}" rel="stylesheet">
 @if (Auth::guard('admin')->check())
 
 @section('content')
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Event Name</th>
-            <th scope="col"> From</th>
-            <th scope="col"> To</th>
-            <th scope="col">Price</th>
-            <th scope="col">Actions</th>
+    <div class="container">
+        <ul class="event-list">
+            <br>
+            @foreach($events as $event)
 
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($events as $event)
-            <tr>
-                <th scope="row">{{$event->id}}</th>
-                <td> {{$event-> name}}</td>
-                <td>{{$event->from}}</td>
-                <td>{{$event->to }}</td>
-                <td>{{$event->price }}</td>
-
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        @if( $location->id!="")
-                            <a href="{{ URL::to('/admin/locations/' . $location->id . '/events/'. $event->id . '/edit') }}">
-                                <button type="button" class="btn btn-warning">Edit</button>
-                            </a>
-
-                            <form action="{{url('/admin/locations/' . $location->id . '/events', [$event->id])}}"
-                                  method="POST">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="submit" class="btn btn-danger" value="Delete"/>
-                            </form>
-
-                        @else
-                            <a href="{{ URL::to('/events/'. $event->id . '/edit') }}">
-                                <button type="button" class="btn btn-warning">Edit</button>
-                            </a>
-
-                            <form action="{{url('/events', [$event->id])}}"
-                                  method="POST">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="submit" class="btn btn-danger" value="Delete"/>
-                            </form>
-                        @endif
-
+                <li>
+                    <time>
+                        <span class="day">{{ Carbon\Carbon::parse($event->from)->format('d') }}</span>
+                        <span class="month">{{ Carbon\Carbon::parse($event->from)->format('M') }}</span>
+                        <span class="year">2014</span>
+                        <span class="time">ALL DAY</span>
+                    </time>
+                    <div class="info">
+                        <h2 class="title">{{$event->name}}</h2>
+                        <p class="desc">Локација: <b>{{$event->location->name}}</b> | Време:
+                            <b>{{ Carbon\Carbon::parse($event->from)->format('H:i') }}</b></p>
+                        <p class="desc">Цена за влез: <b>{{$event->price}} денари</b></p>
                     </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    <div class="social">
+                        <ul>
+                            @if( $location->id!="")
+                                <a href="{{ URL::to('/admin/locations/' . $location->id . '/events/'. $event->id . '/edit') }}">
+                                    <button type="button" class="btn btn-warning"><i class="fa fa-edit fa-2x"
+                                                                                     style="color: white"></i></button>
+                                </a>
+                                <form action="{{url('/admin/locations/' . $location->id . '/events', [$event->id])}}"
+                                      method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash fa-2x"
+                                                                                    style="color: white"></i></button>
+                                </form>
+                            @else
+                                <a href="{{ URL::to('/events/'. $event->id . '/edit') }}">
+                                    <button type="button" class="btn btn-warning"><i class="fa fa-edit fa-2x"
+                                                                                     style="color: white"></i></button>
+                                </a>
+                                <form action="{{url('/events', [$event->id])}}"
+                                      method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash fa-2x"
+                                                                                    style="color: white"></i></button>
+                                </form>
+                            @endif
+                        </ul>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
 @endsection
 
 @else
@@ -68,35 +66,45 @@
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Event Name</th>
-            <th scope="col"> From</th>
-            <th scope="col"> To</th>
-            <th scope="col">Price</th>
-            <th scope="col">Actions</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($events as $event)
-            <tr>
-                <th scope="row">{{$event->id}}</th>
-                <td> {{$event-> name}}</td>
-                <td>{{$event->from}}</td>
-                <td>{{$event->to }}</td>
-                <td>{{$event->price }}</td>
-                <td>
-                    <a href="events/{{$event->id}}/tables">
-                        <button type="button" class="btn btn-primary"> Reserve</button>
-                    </a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="container">
+        <ul class="event-list">
+            <br>
+            @foreach($events as $event)
+
+                <li>
+                    <time>
+                        <span class="day">{{ Carbon\Carbon::parse($event->from)->format('d') }}</span>
+                        <span class="month">{{ Carbon\Carbon::parse($event->from)->format('M') }}</span>
+                        <span class="year">2014</span>
+                        <span class="time">ALL DAY</span>
+                    </time>
+                    <div class="info">
+                        <h2 class="title">{{$event->name}}</h2>
+                        <p class="desc">Локација: <b>{{$event->location->name}}</b> | Време:
+                            <b>{{ Carbon\Carbon::parse($event->from)->format('H:i') }}</b></p>
+                        <p class="desc">Цена за влез: <b>{{$event->price}} денари</b></p>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            @if($event-> to < $date)
+                                <a href="events/{{$event->id}}/tables">
+                                    <button type="button" disabled class="btn btn-primary" style="margin-top: 35px; margin-bottom: 25px"> Expired</button>
+                                </a>
+                            @else
+                                <a href="events/{{$event->id}}/tables">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 35px; margin-bottom: 25px"> Reserve</button>
+                                </a>
+                            @endif
+                        </ul>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
+
+
 @endsection
 
 @endif

@@ -15,7 +15,9 @@
                 <p class="text-left"><strong>Rating:</strong> {{ $location->rating }} </p>
 
                 <br><br><br>
+
                 <hr style="border-color: rgba(155,160,190,0.95);">
+
                     <form action="/locations/{{$location->id}}/ratings" method="POST">
 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -61,7 +63,8 @@
                 @foreach($location->comments as $comment)
 
                     <li class="list-group-item">
-                        @if($comment->user_id == Auth::user()->id)
+
+                        @if(!Auth::user()=="" && $comment->user_id == Auth::user()->id)
                             <form action="{{url('/locations/' . $location->id . '/comments', [$comment->id])}}"
                                   method="POST">
                                 <input type="hidden" name="_method" value="DELETE">

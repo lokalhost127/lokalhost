@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Location;
 use App\Table;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -25,7 +26,8 @@ class EventController extends Controller
             $events = Event::where('location_id', $location->id)->get();
 
         }
-        return view('events.index', compact('events', $events, 'location', $location));
+         $date=Carbon::now();
+        return view('events.index', compact('events', $events, 'location', $location,'date',$date));
     }
 
     public function create(Location $location, Event $event)
@@ -67,6 +69,10 @@ class EventController extends Controller
 
     public function show(Location $location, Event $event)
     {
+        if($event->to > Carbon::now())
+        {
+            $event->to = "Expired";
+        }
         return view('events.show', compact('event', $event, 'location', $location));
     }
 
