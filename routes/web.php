@@ -10,6 +10,7 @@
 |
 */
 
+use App\Http\Middleware\CheckMyReservations;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -25,7 +26,7 @@ Route::resource('locations.events.tables', 'TableController');
 Route::resource('events.tables', 'TableController');
 Route::resource('locations.comments', 'CommentsController');
 Route::resource('locations.ratings', 'RatingsController');
-Route::get('/reservations', 'MyReservationsController@index');
+Route::get('/reservations', 'MyReservationsController@index')->name('reservations')->middleware('reservations');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
