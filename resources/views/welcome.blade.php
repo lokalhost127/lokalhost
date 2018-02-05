@@ -25,7 +25,7 @@
         color: white !important;
     }
 </style>
-<body style="background: #2787b2 url({{asset('assets/img/backgrounds/1.jpg')}}) ">
+<body style="background:  #445e83 url({{asset('assets/img/backgrounds/1.jpg')}}) ">
 <div id="app">
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(45,56,75,0.92);">
@@ -48,7 +48,7 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="my-2 my-lg-0">
+                <ul class="nav list-inline ml-auto">
 
                     @if (!Auth::guard('web')->check() && !Auth::guard('admin')->check())                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
@@ -121,6 +121,25 @@
 
     @yield('content')
 </div>
+
+<div class="container px-1 mx-6">
+    {{--<h1>Showing Location {{ $location->name }}</h1>--}}
+    <br>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Lokal Host</h1>
+            <a class="btn btn-danger"href="{{ route('register') }}">РЕЗЕРВИРАЈ</a>
+            <a class="btn btn-warning"href="">БИДИ ХОСТ</a>
+            <br>
+            <p class="lead">Резервирајте на вашето омилено место или бидете хост на настани</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

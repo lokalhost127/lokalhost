@@ -6,18 +6,28 @@
         <br>
         <div class="row">
             <div class="col-md-3 text-center pr-4 text-light" style="line-height: 1.3; font-size: 15px;">
-                <br><br>
-                <p class="h3 text-uppercase">{{ $location->name }}</p><br>
+                <i class="fa fa-arrow-circle-o-down"></i>
+                <p class="h3 text-uppercase">{{ $location->name }}</p>
+                <hr style="border-color: rgba(155,160,190,0.95);">
                 <p class="text-justify" >{{ $location->description }}</p>
-                <p class="text-left"><strong>Location Address:</strong> {{ $location->address }}</p>
-                <p class="text-left"><strong>Capacity:</strong> {{ $location->capacity }} </p>
+                <p class="text-left"><strong>Адреса:</strong> {{ $location->address }}</p>
+                <p class="text-left"><strong>Капацитет:</strong> {{ $location->capacity }} </p>
+                <p class="text-left"><strong>Rating:</strong> {{ $location->rating }} </p>
+
                 <br><br><br>
+                <hr style="border-color: rgba(155,160,190,0.95);">
                     <form action="/locations/{{$location->id}}/ratings" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <label>Rating
-                            <input type="number" name="star" max="5" min="1">
-                            <button class="btn btn-primary" type="submit"> Add Rating</button>
-                        </label>
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <label>Rating
+                                <input type="number" name="star" max="5" min="1">
+                                @if(Auth::guard('web')->check())
+                                    <button class="btn btn-primary" type="submit"> Add Rating</button>
+                                @else
+                                    <button class="btn btn-primary" disabled="true" type="submit"> Add Rating</button>
+                                @endif
+
+                            </label>
                     </form>
                     <div class="row">
 
