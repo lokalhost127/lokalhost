@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -6,6 +5,7 @@
     <div class="container px-1 mx-6 mb-0">
         {{--<h1>Showing Location {{ $location->name }}</h1>--}}
         <br>
+
         <div class="jumbotron jumbotron-fluid mb-0" style="
                 background-repeat: no-repeat;
                 background-image: url({{asset('assets/img/home-image1.svg')}});
@@ -19,6 +19,8 @@
                 <a class="btn btn-warning ml-3" href="{{ route('register-admin')}}">БИДИ ХОСТ</a>
                 <br><br>
                 <p class="lead" style="color: #D0D2F9">Резервирајте на вашето омилено место или бидете хост на настани</p>
+
+     
             </div>
         </div>
     </div>
