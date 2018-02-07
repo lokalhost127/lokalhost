@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<link href="{{asset('css/star.css')}}" rel="stylesheet">
+<link href="{{asset('css/star.css')}}" rel="stylesheet" xmlns:v-on="http://www.w3.org/1999/xhtml">
 @section('content')
     <div id="showblade" class="container px-1 mx-6">
         {{--<h1>Showing Location {{ $location->name }}</h1>--}}
