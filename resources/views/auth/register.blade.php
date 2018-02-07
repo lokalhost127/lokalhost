@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="{{asset('assets/css/form-elements.css')}}">
 @section('content')
     <div class="col-md-4 mx-auto">
         <div class="form-box">

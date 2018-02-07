@@ -1,6 +1,6 @@
 <div style="background-image: {{asset('assets/img/backgrounds/1.jpg')}}">
     @extends('layouts.app')
-
+    <link rel="stylesheet" href="{{asset('assets/css/form-elements.css')}}">
     @section('content')
 
         <div class="col-md-4 mx-auto">
