@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="7.73458in" height="3.14214in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 7861 3194"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#111325;stroke-width:42.348}
+    .fil3 {fill:none}
+    .fil2 {fill:#111325}
+    .fil4 {fill:#2F3457}
+    .fil5 {fill:#454E82}
+    .fil1 {fill:#D0D2F9}
+    .fil0 {fill:url(#id0)}
+   ]]>
+  </style>
+  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="3850.98" y1="20.0836" x2="3850.99" y2="3213.71">
+   <stop offset="0" style="stop-opacity:1; stop-color:#1D324F"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#9194BD"/>
+  </linearGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0" width="7861" height="3194"/>
+  <path class="fil1" d="M3931 191c154,0 278,125 278,279 0,11 0,20 -2,28 -16,-139 -134,-246 -276,-246 -143,0 -261,107 -277,246 -1,-8 -2,-17 -2,-28 0,-154 125,-279 279,-279z"/>
+  <rect class="fil2" y="842" width="1395" height="2351"/>
+  <rect class="fil3" x="153" y="471" width="34.8348" height="557.375"/>
+  <rect class="fil2" x="153" y="598" width="34.8348" height="2351.36"/>
+  <path class="fil3 str0" d="M170 640c207,195 545,290 1016,284"/>
+  <path class="fil2" d="M1130 1315l376 0 0 -49 -250 0 0 -14 250 0 0 -48 -250 0 0 -15 250 0 35 0 0 126 0 95 0 13 -411 0 0 -108zm-377 -126l35 0 0 221 -35 0 0 -221z"/>
+  <path class="fil2" d="M1130 1733l376 0 0 -49 -250 0 0 -14 250 0 0 -48 -250 0 0 -15 250 0 35 0 0 126 0 95 0 13 -411 0 0 -108zm-377 -126l35 0 0 221 -35 0 0 -221z"/>
+  <path class="fil2" d="M1130 2152l376 0 0 -50 -250 0 0 -14 250 0 0 -48 -250 0 0 -15 250 0 35 0 0 127 0 94 0 13 -411 0 0 -107zm-377 -127l35 0 0 221 -35 0 0 -221z"/>
+  <path class="fil2" d="M1130 2570l376 0 0 -50 -250 0 0 -14 250 0 0 -48 -250 0 0 -15 250 0 35 0 0 127 0 94 0 13 -411 0 0 -107zm-377 -127l35 0 0 221 -35 0 0 -221z"/>
+  <path class="fil2" d="M1130 2988l376 0 0 -49 -250 0 0 -15 250 0 0 -48 -250 0 0 -15 250 0 35 0 0 127 0 94 0 13 -411 0 0 -107zm-377 -127l35 0 0 221 -35 0 0 -221z"/>
+  <rect class="fil2" x="271" y="559" width="319" height="418"/>
+  <rect class="fil4" x="1078" y="1418" width="215" height="203"/>
+  <rect class="fil5" x="1078" y="1000" width="215" height="203"/>
+  <rect class="fil5" x="1078" y="1837" width="215" height="203"/>
+  <rect class="fil5" x="1078" y="2255" width="215" height="203"/>
+  <polygon class="fil4" points="1078,3091 1293,3091 1293,3192 1078,3192 "/>
+  <rect class="fil4" x="1078" y="2673" width="215" height="203"/>
+  <rect class="fil2" x="6337" y="842" width="1525" height="2351"/>
+  <rect class="fil2" x="7657" y="598" width="38.0699" height="2351.36"/>
+  <path class="fil3 str0" d="M7675 640c-226,195 -596,290 -1110,284"/>
+  <path class="fil2" d="M6627 1315l-411 0 0 -49 273 0 0 -14 -273 0 0 -48 273 0 0 -15 -273 0 -39 0 0 126 0 95 0 13 450 0 0 -108zm411 -126l-38 0 0 221 38 0 0 -221z"/>
+  <path class="fil2" d="M6627 1733l-411 0 0 -49 273 0 0 -14 -273 0 0 -48 273 0 0 -15 -273 0 -39 0 0 126 0 95 0 13 450 0 0 -108zm411 -126l-38 0 0 221 38 0 0 -221z"/>
+  <path class="fil2" d="M6627 2152l-411 0 0 -50 273 0 0 -14 -273 0 0 -48 273 0 0 -15 -273 0 -39 0 0 127 0 94 0 13 450 0 0 -107zm411 -127l-38 0 0 221 38 0 0 -221z"/>
+  <path class="fil2" d="M6627 2570l-411 0 0 -50 273 0 0 -14 -273 0 0 -48 273 0 0 -15 -273 0 -39 0 0 127 0 94 0 13 450 0 0 -107zm411 -127l-38 0 0 221 38 0 0 -221z"/>
+  <path class="fil2" d="M6627 2988l-411 0 0 -49 273 0 0 -15 -273 0 0 -48 273 0 0 -15 -273 0 -39 0 0 127 0 94 0 13 450 0 0 -107zm411 -127l-38 0 0 221 38 0 0 -221z"/>
+  <rect class="fil2" x="7216" y="559" width="349" height="418"/>
+  <rect class="fil5" x="6449" y="1418" width="235" height="203"/>
+  <rect class="fil4" x="6449" y="1000" width="235" height="203"/>
+  <rect class="fil4" x="6449" y="1837" width="235" height="203"/>
+  <rect class="fil4" x="6449" y="2255" width="235" height="203"/>
+  <polygon class="fil5" points="6683,3091 6449,3091 6449,3192 6683,3192 "/>
+  <rect class="fil5" x="6449" y="2673" width="235" height="203"/>
+ </g>
+</svg>

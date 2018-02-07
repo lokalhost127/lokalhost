@@ -31,7 +31,7 @@
                             </a>
                         @endif
                     @else
-                        <form action="{{url('locations/' . $location->id . '/events/' . $event->id . '/tables' , [$table->id])}}"
+                        <form action="{{url('locations/' . $event->location_id . '/events/' . $event->id . '/tables' , [$table->id])}}"
                               method="POST">
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

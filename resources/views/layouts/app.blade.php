@@ -39,12 +39,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav col-md-8">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('/locations') }}">Локали</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('/events') }}"> Настани </a>
-                    </li>
+                    @if(Auth::guard('admin')->check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/locations') }}"> Мои Локали </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/events') }}"> Мои Настани </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/locations') }}">Локали</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/events') }}"> Настани </a>
+                        </li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -52,75 +61,71 @@
 
                     @if (!Auth::guard('web')->check() && !Auth::guard('admin')->check())
                         {{--<ul class="navbar-nav mr-auto">--}}
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Најава
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ url('/login') }}">Login as User</a>
-                                        <a class="dropdown-item" href="{{ url('/admin/login') }}">Login as Admin</a>
-                                    </div>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Најава
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ url('/login') }}">Најава - корисник</a>
+                                    <a class="dropdown-item" href="{{ url('/admin/login') }}">Најава - хост</a>
                                 </div>
-                            </li>&nbsp;
-                            <a class="btn btn-info" href="{{ route('register') }}">Регистрација</a>
-                        </ul>
-                    @elseif(Auth::guard('admin')->check())
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{Auth::guard('admin')-> user() -> name }} <span class="caret"></span>
-                                    </button>
-
-                                    <div class="dropdown-menu" role="menu">
-                                        <div class="dropdown-item">
-                                            <a class="dropdown-item" href="{{ route('logout')}}"
-                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                Logout
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                  style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    @elseif(Auth::guard('web')->check())
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </button>
-
-                                    <div class="dropdown-menu" role="menu">
-                                        <div class="dropdown-item">
-                                            <a class="dropdown-item" href="{{ route('logout')}}"
-                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                Logout
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('reservations')}}">
-                                                Мои резревации
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                  style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    @endif
+                            </div>
+                        </li>&nbsp;
+                        <a class="btn btn-info" href="{{ route('register') }}">Регистрација</a>
                 </ul>
+                @elseif(Auth::guard('admin')->check())
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{Auth::guard('admin')-> user() -> name }} <span class="caret"></span>
+                                </button>
+
+                                <div class="dropdown-menu" role="menu">
+                                    <div class="dropdown-item">
+                                        <a class="dropdown-item" href="{{ route('logout')}}"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Одјави се
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                @elseif(Auth::guard('web')->check())
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </button>
+
+                                <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" href="{{ route('reservations')}}">
+                                        Мои резревации
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout')}}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Одјави се
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                @endif
             </div>
         </div>
     </nav>
@@ -140,5 +145,8 @@
 <script src="{{asset('assets/js/jquery-1.11.1.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.backstretch.min.js')}}"></script>
 <script src="{{asset('assets/js/placeholder.js')}}"></script>
+<script src="{{asset('assets/js/vue.js')}}"></script>
+<script src="{{asset('assets/js/app.js')}}"></script>
+
 </body>
 </html>

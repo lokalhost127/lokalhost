@@ -1,4 +1,5 @@
 @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+
 .card-horizontal {
     border-radius: 0.25rem;
     margin-top: -2px;
@@ -14,15 +15,18 @@
 .card-row {
     box-shadow: 2px 2px 2px #000000;
 }
+
 .right {
     width: 40px;
 }
+
 .event-list {
     list-style: none;
     font-family: 'Lato', sans-serif;
     margin: 0px;
     padding: 0px;
 }
+
 .event-list > li {
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 5px rgb(51, 51, 51);
@@ -30,6 +34,7 @@
     padding: 0px;
     margin: 0px 0px 20px;
 }
+
 .event-list > li > time {
     display: inline-block;
     width: 100%;
@@ -39,41 +44,50 @@
     text-align: center;
     text-transform: uppercase;
 }
+
 .event-list > li:nth-child(even) > time {
     background-color: rgb(165, 82, 167);
 }
+
 .event-list > li > time > span {
     display: none;
 }
+
 .event-list > li > time > .day {
     display: block;
     font-size: 56pt;
     font-weight: 100;
     line-height: 1;
 }
+
 .event-list > li time > .month {
     display: block;
     font-size: 24pt;
     font-weight: 900;
     line-height: 1;
 }
+
 .event-list > li > img {
     width: 100%;
 }
+
 .event-list > li > .info {
     padding-top: 5px;
     text-align: center;
 }
+
 .event-list > li > .info > .title {
     font-size: 17pt;
     font-weight: 700;
     margin: 0px;
 }
+
 .event-list > li > .info > .desc {
     font-size: 13pt;
     font-weight: 300;
     margin: 0px;
 }
+
 .event-list > li > .info > ul,
 .event-list > li > .social > ul {
     display: table;
@@ -83,9 +97,11 @@
     width: 100%;
     text-align: center;
 }
+
 .event-list > li > .social > ul {
     margin: 0px;
 }
+
 .event-list > li > .info > ul > li,
 .event-list > li > .social > ul > li {
     display: table-cell;
@@ -95,23 +111,28 @@
     font-weight: 300;
     padding: 3px 0px;
 }
+
 .event-list > li > .info > ul > li > a {
     display: block;
     width: 100%;
     color: rgb(30, 30, 30);
     text-decoration: none;
 }
+
 .event-list > li > .social > ul > li {
     padding: 0px;
 }
+
 .event-list > li > .social > ul > li > a {
     padding: 3px 0px;
 }
+
 .event-list > li > .info > ul > li:hover,
 .event-list > li > .social > ul > li:hover {
     color: rgb(30, 30, 30);
     background-color: rgb(200, 200, 200);
 }
+
 @media (min-width: 768px) {
     .event-list > li {
         position: relative;
@@ -186,5 +207,17 @@
         display: block;
         width: 40px;
         padding: 10px 0px 9px;
+    }
+
+    .title:hover {
+        color: #868AD6;
+    }
+
+    .title {
+        margin-left: 10px;
+        color: #445e83;
+    }
+    .reservation-desc {
+        font-size: 20px;
     }
 }

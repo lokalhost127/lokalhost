@@ -49,8 +49,8 @@ class LocationController extends Controller
             'description' => $request->description,
             'address' => $request->address,
             'capacity' => $request->capacity,
-            'admin_id' => $admin_id
-
+            'admin_id' => $admin_id,
+            'rating' => 0
         ]);
         return redirect('/admin/locations/' . $location->id);
     }
