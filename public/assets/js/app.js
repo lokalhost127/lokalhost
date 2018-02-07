@@ -13,10 +13,8 @@ const app = new Vue({
 
     data:{
         locationImage: true
-    }
-
-
-
-
-
+    },
 });
+
+
+

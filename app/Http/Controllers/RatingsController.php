@@ -36,4 +36,11 @@ class RatingsController extends Controller
 
         return back();
     }
+
+
 }
+
+
+
+
+

@@ -27,23 +27,22 @@ class TablesTableSeeder extends Seeder
             }
         }
 
-        $tables = Table::all()->take(60);
+        $table1 = Table::where("id", 1)->first();
+        $table2 = Table::where("id", 11)->first();
+        $table3 = Table::where("id", 21)->first();
 
-        foreach ($tables as $table) {
-            $table->reserved = true;
+        $table1->reserved = true;
+        $table1->user_id = 1;
 
-            if ($table->id < 20) {
-                $table->user_id = 1;
-            } elseif ($table->id > 20 && $table->id < 40) {
+        $table2->reserved = true;
+        $table2->user_id = 2;
 
-                $table->user_id = 2;
-            } else {
+        $table3->reserved = true;
+        $table3->user_id = 3;
 
-                $table->user_id = 3;
+        $table1->save();
+        $table2->save();
+        $table3->save();
 
-            }
-            $table->save();
-
-        }
     }
 }
