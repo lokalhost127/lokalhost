@@ -6,6 +6,7 @@ use App\Location;
 use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class RatingsController extends Controller
 {
@@ -17,7 +18,7 @@ class RatingsController extends Controller
                 'location_id' => $location->id
             ],
             [
-                'star' => $request->star,
+                'star' => Input::get('star'),
                 'location_id' => $location->id,
                 'user_id' => Auth::id()
             ]);
