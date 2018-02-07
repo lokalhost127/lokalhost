@@ -15,8 +15,14 @@
                 background-size: cover;">
             <div class="container">
                 <h1 class="display-3 text-light" >Локал Хост</h1> <br>
+                @if(Auth::guard('web')->check())
+                    <a class="btn btn-danger mr-3" href='/events'>РЕЗЕРВИРАЈ</a>
+                @elseif(Auth::guard('admin')->check())
+                    <a class="btn btn-danger mr-3" href='/locations'>МОИ ЛОКАЛИ</a>
+                @else
                 <a class="btn btn-danger mr-3" href="{{ route('register') }}">РЕЗЕРВИРАЈ</a>
                 <a class="btn btn-warning ml-3" href="{{ route('register-admin')}}">БИДИ ХОСТ</a>
+                @endif
                 <br><br>
                 <p class="lead" style="color: #D0D2F9">Резервирајте на вашето омилено место или бидете хост на настани</p>
 

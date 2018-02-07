@@ -39,12 +39,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav col-md-8">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('/locations') }}">Локали</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('/events') }}"> Настани </a>
-                    </li>
+                    @if(Auth::guard('admin')->check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/locations') }}"> Мои Локали </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/events') }}"> Мои Настани </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/locations') }}">Локали</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/events') }}"> Настани </a>
+                        </li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
