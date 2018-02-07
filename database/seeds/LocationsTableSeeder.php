@@ -18,18 +18,20 @@ class LocationsTableSeeder extends Seeder
             'name' => 'Јавна Соба',
             'address' => '50-та Девизија 24, Скопје',
             'description' => 'Мезе бар',
-            'capacity' => 50,
+            'capacity' => 10,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'rating'=> 5
         ]);
+
+
 
         DB::table('locations')->insert([
             'admin_id' => 1,
             'name' => 'Гнездо',
             'address' => 'Улица Македонија , Скопје',
             'description' => 'Кујна бар',
-            'capacity' => 100,
+            'capacity' => 10,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'rating'=> 5
@@ -40,7 +42,7 @@ class LocationsTableSeeder extends Seeder
             'name' => 'Ало Ако',
             'address' => 'Улица Македонија , Скопје',
             'description' => 'Кафе бар',
-            'capacity' => 50,
+            'capacity' => 10,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'rating'=> 5
@@ -51,7 +53,7 @@ class LocationsTableSeeder extends Seeder
             'name' => 'Паб Комедија',
             'address' => 'Бул. Свети Климент Охридски, Скопје',
             'description' => 'бар',
-            'capacity' => 60,
+            'capacity' => 10,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'rating'=> 5
@@ -63,7 +65,7 @@ class LocationsTableSeeder extends Seeder
             'name' => 'Каса Кубана',
             'address' => 'Кеј 13 Ноември , Скопје',
             'description' => 'Кубански ресторан & Коктел бар',
-            'capacity' => 30,
+            'capacity' => 10,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'rating'=> 5
@@ -76,7 +78,7 @@ class LocationsTableSeeder extends Seeder
             'name' => 'Рок кафана Рустикана',
             'address' => 'Булевар Илинден , Скопје',
             'description' => 'Рок бар',
-            'capacity' => 80,
+            'capacity' => 10,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'rating'=> 5
