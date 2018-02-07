@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<link rel="stylesheet" href="{{asset('assets/css/form-elements.css')}}">
 
 @section('content')
 
