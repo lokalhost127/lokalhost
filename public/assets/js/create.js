@@ -8,7 +8,7 @@ const app = new Vue({
         createImage: true,
         createdObjects: [],
         selectedObject: [],
-        showItem: "0",
+        showItem: "/assets/img/location_components/0.svg",
         selectedItem: "0",
         selectedCreatedItem: "0",
         tableNumber: 0,
@@ -334,7 +334,7 @@ const app = new Vue({
                 else
                 {
                     this.selectedItem = 0;
-                    this.showItem = "0";
+                    this.showItem = "/assets/img/location_components/0.svg";
                 }
             }
         },
@@ -351,7 +351,7 @@ const app = new Vue({
                 }
                 else
                 {
-                    this.showItem = "0";
+                    this.showItem = "/assets/img/location_components/0.svg";
                 }
             }
 
@@ -374,9 +374,12 @@ const app = new Vue({
                 if(idx === 0)
                 {
                     if(this.createdObjects.length === 1)
-                    {this.selectedCreatedItem = "0";}
+                    {this.selectedCreatedItem = "0";
+                        this.showItem ="/assets/img/location_components/0.svg";
+                    }
                     else
                     {
+
                         this.selectedCreatedItem = this.createdObjects[1]
                     }
                 }

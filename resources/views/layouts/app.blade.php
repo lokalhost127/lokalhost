@@ -32,7 +32,7 @@
         <div class=" container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img height="50px" width="50px"  src="{{asset('assets/img/logo.svg')}}">
                 </a>
             </div>
 

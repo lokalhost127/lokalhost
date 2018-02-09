@@ -59,11 +59,20 @@
                 <img class="text-light" id="showComponent" v-bind:src="showItem">
 
                 <div class="form-group">
-                    <label class="text-light" for="sel1">Избери елемент</label>
+                    <label class="text-light" for="sel1">Креирани елементи</label>
 
                     <select @change="selectItem" class="form-control form-control-sm" id="createdElements">
                         <option v-for:="obj in createdObjects"> @{{ obj }} </option>
                     </select>
+                </div>
+                <div class="text-light" id="Images">Навигација</div>
+
+                <div class="mb-3">
+                    <button v-on:click="left()" type=button class="btn btn-primary"><i class="fa fa-arrow-left"></i></button>
+
+                    <button v-on:click="down()" type=button class="btn btn-primary"><i class="fa fa-arrow-down"></i></button>
+                    <button v-on:click="top()" type=button class="btn btn-primary"><i class="fa fa-arrow-up"></i></button>
+                    <button v-on:click="right()" type=button class="btn btn-primary"><i class="fa fa-arrow-right"></i></button>
                 </div>
                 <div >
                     <div class="float-left ">
@@ -72,18 +81,8 @@
                         <label class="text-light text-right">Маси: </label> <label  class="text-light"> @{{tableNumber}} </label></div>
 
                 </div>
-                <br> <br>
-                <div class="text-light" id="Images">Навигација</div>
 
-                <div>
-                <button v-on:click="left()" type=button class="btn btn-primary"><i class="fa fa-arrow-left"></i></button>
 
-                <button v-on:click="down()" type=button class="btn btn-primary"><i class="fa fa-arrow-down"></i></button>
-                    <button v-on:click="top()" type=button class="btn btn-primary"><i class="fa fa-arrow-up"></i></button>
-                    <button v-on:click="right()" type=button class="btn btn-primary"><i class="fa fa-arrow-right"></i></button>
-                </div> <br>
-                <button v-on:click="add()" type=button class="btn btn-primary">Внеси</button>
-                <button v-on:click="deleteEl()" type=button class="btn btn-primary">Избриши</button>
             </div>
             <div class="col-md-9">
                 <div>
@@ -111,6 +110,7 @@
                     <rect cx="0" cy="0" fill="#E2E7F0" height="900" width="450"></rect>
 
                 </svg>
+
                 </div>
             </div>
         </div>
@@ -119,12 +119,17 @@
         <div class="row">
 
                 <div class="col-md-3 text-center pr-4" style="color: white ;line-height: 1.3; font-size: 15px;">
+                    <div class="mt-3">
+                        <button v-on:click="add()" type=button class="btn btn-primary">Внеси</button>
+                        <button v-on:click="deleteEl()" type=button class="btn btn-primary">Избриши</button>
+                    </div>
                 </div>
                 <div class="col-md-9 mt-3 text-right">
-                    <button v-on:click="createImage = false" type=button class="btn btn-primary">Внеси Инфо</button>
+                    <div class="float-right">
+                        <button v-on:click="createImage = false" type=button class="btn btn-primary">Внеси Инфо</button>
 
-                    <button  v-on:click="createImage = true" type=button class="btn btn-primary">Внеси Слика</button>
-
+                        <button  v-on:click="createImage = true" type=button class="btn btn-primary">Внеси Слика</button>
+                        <button type="submit" class="btn btn-danger">Креирај локација</button></div>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -135,7 +140,7 @@
                         </div>
                     @endif
 
-                    <button type="submit" class="btn btn-danger">Креирај локација</button>
+
 
                 </div>
         </div>
