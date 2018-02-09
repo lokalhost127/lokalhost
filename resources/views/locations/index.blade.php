@@ -6,7 +6,8 @@
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
     <div>
-        <a class="add-local" href="/locations/create" title="Креирај нов локал"><i class="fa fa-plus-circle"></i></a>
+
+        <a class="add-local" href="/locations/create" title="Креирај нов локал"><i class=" pt-2 fa fa-plus-circle"></i></a>
     </div>
     <div class="container">
         <div class="container-fluid">
