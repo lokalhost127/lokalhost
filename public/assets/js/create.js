@@ -4,6 +4,12 @@ const app = new Vue({
     el: '#createapp',
 
     data:{
+        showInfo: "display: block",
+        showImageInfo: "display: none",
+        locationName: "",
+        locationAddress: "",
+        locationContact: "",
+        locationDescription: "",
         step: 5,
         createImage: true,
         createdObjects: [],
@@ -396,7 +402,39 @@ const app = new Vue({
 
 
 
+        },
+        saveLocationName: function(e)
+        {
+            this.locationName = e.target.value;
+        },
+        saveLocationAddress: function(e)
+        {
+            this.locationAddress = e.target.value;
+        },
+        saveLocationContact: function(e)
+        {
+            this.locationContact = e.target.value;
+        },
+        saveLocationDescription: function(e)
+        {
+            this.locationDescription= e.target.value;
+        },
+        toggleView: function(att){
+
+            if(att === 'info')
+            {
+                this.showInfo =  "display: block;";
+                this.showImageInfo =  "display: none;";
+            }
+            else if (att === 'image')
+            {
+                this.showInfo =  "display: none;";
+                this.showImageInfo =  "display: block;";
+            }
+
         }
+
+
 
 
 
