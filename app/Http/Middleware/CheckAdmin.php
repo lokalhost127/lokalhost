@@ -14,7 +14,7 @@ class CheckAdmin
     public function handle($request, Closure $next){
         if(!Auth::guard('admin')->check())
         {
-            if(($request->getPathInfo()=='/admin/login') || ($request->getPathInfo()=='/admin/login'))
+            if($request->getPathInfo()=='/admin/login')
             {
                 return $next($request);
             }

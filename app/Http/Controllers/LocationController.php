@@ -14,6 +14,12 @@ class LocationController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+
+    public function __construct()
+    {
+        $this->middleware('locations');
+    }
+
     public function index()
     {
         $admin_id = Auth::guard('admin')->id();
