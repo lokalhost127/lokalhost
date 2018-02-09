@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     {{--<h2 class="text-light">Add New Location</h2>--}}
     {{--<hr>--}}
@@ -30,63 +31,96 @@
 
                 </div>
             <div v-if="createImage" class="col-md-3">
-
                 {{ csrf_field() }}
                 <div class="form-group" @change="handleChange">
                     <label class="text-light" for="sel1">Избери елемент</label>
                     <select class="form-control form-control-sm" id="elements">
-                        <option value="">Избери елемент</option>
-                        <option value="1">Маса</option>
-                        <option value="2">Шанк</option>
-                        <option value="3">Ентериер</option>
+                        <option value="0">Избери елемент</option>
+                        <option value="background-0">Позадина</option>
+                        <option value="background-1">Позадина 1</option>
+                        <option value="background-2">Позадина 2</option>
+                        <option value="table-0">Маса</option>
+                        <option value="table-1">Маса 1</option>
+                        <option value="table-2">Маса 2</option>
+                        <option value="table-3">Маса 3</option>
+                        <option value="table-4">Маса 4</option>
+                        <option value="bar-0">Шанк</option>
+                        <option value="bar-1">Шанк 1</option>
+                        <option value="bar-2">Шанк 2</option>
+                        <option value="foreground-0">Декорација 1</option>
+                        <option value="foreground-4">Декорација 2</option>
+                        <option value="foreground-1">Светло 1</option>
+                        <option value="foreground-2">Декорација 3</option>
+                        <option value="foreground-3">Тепих 1</option>
+                        <option value="foreground-5">Тепих 2</option>
+
                     </select>
                 </div>
-                <img v-bind:src="showItem" alt="No image yet">
+                <img class="text-light" id="showComponent" v-bind:src="showItem">
 
                 <div class="form-group">
-                    <label class="text-light" for="sel1">Избери елемент // treba da se sredi so VUE</label>
-                    <select class="form-control form-control-sm" id="createdElements">
-                        <option v-for:="obj in createdObjects"> @{{ obj }} </option>
+                    <label class="text-light" for="sel1">Избери елемент</label>
 
+                    <select @change="selectItem" class="form-control form-control-sm" id="createdElements">
+                        <option v-for:="obj in createdObjects"> @{{ obj }} </option>
                     </select>
                 </div>
-                Чекор:
+                <div >
+                    <div class="float-left ">
+                    <label class="text-light float-left">Чекор &nbsp;</label> <input v-on:change="stepChange" type="number" name="quantity" min="1" max="100"></div>
+                    <div class="float-right ">
+                        <label class="text-light text-right">Маси: </label> <label  class="text-light"> @{{tableNumber}} </label></div>
 
-                <input v-on:change="stepChange" type="number" name="quantity" min="1" max="100">
+                </div>
+                <br> <br>
+                <div class="text-light" id="Images">Навигација</div>
 
-                <div id="Images">Slikichki od elementi</div>
+                <div>
+                <button v-on:click="left()" type=button class="btn btn-primary"><i class="fa fa-arrow-left"></i></button>
 
-                <button v-on:click="right()" type=button class="btn btn-primary">R</button>
-                <button v-on:click="left()" type=button class="btn btn-primary">L</button>
-                <button v-on:click="top()" type=button class="btn btn-primary">U</button>
-                <button v-on:click="down()" type=button class="btn btn-primary">D</button>
-
-                <button v-on:click="add()" type=button class="btn btn-primary">Add element</button>
-
-
-
+                <button v-on:click="down()" type=button class="btn btn-primary"><i class="fa fa-arrow-down"></i></button>
+                    <button v-on:click="top()" type=button class="btn btn-primary"><i class="fa fa-arrow-up"></i></button>
+                    <button v-on:click="right()" type=button class="btn btn-primary"><i class="fa fa-arrow-right"></i></button>
+                </div> <br>
+                <button v-on:click="add()" type=button class="btn btn-primary">Внеси</button>
+                <button v-on:click="deleteEl()" type=button class="btn btn-primary">Избриши</button>
             </div>
-
-
             <div class="col-md-9">
-                <svg ref="imagecanvas" width="100%" height="100%">
-                    <g  v-bind:transform="T"><circle id="first" cx="50" cy="50" r="80" stroke="green" stroke-width="4" fill="yellow" />
-                    <circle cx="50" cy="60" r="80" stroke="green" stroke-width="4" fill="yellow" />
-                    </g>
-                </svg>
-            </div>
+                <div>
+                <svg width="841px" height="429px" id="svg-canvas" viewBox="0 0 403 206">
 
+                    <defs>
+                        <linearGradient id="bg-0-gradient" gradientUnits="userSpaceOnUse" x1="197.491" y1="1.29375" x2="197.491" y2="206.901">
+                            <stop offset="0" stop-opacity="1" stop-color="#262E57"/>
+                            <stop offset="1" stop-opacity="1" stop-color="#9274AB"/>
+                        </linearGradient>
+                        <mask id="mask1">
+                        <linearGradient id="gradient1" gradientUnits="userSpaceOnUse" x1="175.687" y1="52.0105" x2="-43.8896" y2="52.0105">
+                         <stop offset="0" stop-opacity="1" stop-color="white"/>
+                         <stop offset="0.521569" stop-opacity="-95.8784" stop-color="white"/><stop offset="1" stop-opacity="0" stop-color="white"/>
+                          </linearGradient>
+
+                          </mask>
+                        <mask id="mask2">
+                         <linearGradient id="gradient2" gradientUnits="userSpaceOnUse" x1="26.9451" y1="5.95209" x2="26.9456" y2="24.6062">
+                         <stop offset="0" stop-opacity="1" stop-color="white"/>
+                         <stop offset="1" stop-opacity="0" stop-color="white"/>
+                         </linearGradient>
+                         </mask>
+                    </defs>
+                    <rect cx="0" cy="0" fill="#E2E7F0" height="900" width="450"></rect>
+
+                </svg>
+                </div>
+            </div>
         </div>
 
-            {{--<button v-on:click="transform()" type=button class="btn btn-primary">D</button>--}}
 
         <div class="row">
 
                 <div class="col-md-3 text-center pr-4" style="color: white ;line-height: 1.3; font-size: 15px;">
-
                 </div>
                 <div class="col-md-9 mt-3 text-right">
-
                     <button v-on:click="createImage = false" type=button class="btn btn-primary">Внеси Инфо</button>
 
                     <button  v-on:click="createImage = true" type=button class="btn btn-primary">Внеси Слика</button>
@@ -105,9 +139,6 @@
 
                 </div>
         </div>
-
-
-
     </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.27/vue.js"></script>

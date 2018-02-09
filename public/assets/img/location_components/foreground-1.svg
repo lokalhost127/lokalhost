@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="843px" height="430px" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 400 204"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+    <mask id="id0">
+      <linearGradient id="id1" gradientUnits="userSpaceOnUse" x1="205.274" y1="39.7724" x2="205.276" y2="122.092">
+       <stop offset="0" stop-opacity="1" stop-color="white"/>
+       <stop offset="1" stop-opacity="0" stop-color="white"/>
+      </linearGradient>
+     <rect fill="url(#id1)" x="142" y="68" width="116.847" height="68.3056"/>
+    </mask>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect fill="#B5C2D8" width="400" height="204" rx="9" ry="9"/>
+  <rect fill="#E2E7F0" x="3" y="3" width="393" height="198" rx="8" ry="9"/>
+  <g id="_276872940416">
+   <path fill="#FAF8F9" d="M231 68c0,18 -14,31 -31,31 -17,0 -31,-13 -31,-31l62 0z"/>
+   <path fill="#FAF8F9" mask="url(#id0)" d="M258 68c0,3 0,5 0,7 0,34 -26,61 -58,61 -32,0 -58,-27 -58,-61 0,-2 0,-4 1,-7l115 0z"/>
+  </g>
+ </g>
+</svg>

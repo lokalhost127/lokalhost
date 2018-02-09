@@ -10,7 +10,7 @@
     @if( $location->id!="")
         <div>
             <a class="add-local" href="{{ URL::to('/admin/locations/' . $location->id . '/events/create') }}"
-               title="Креирај нов локал"><i class="fa fa-plus-circle"></i></a>
+               title="Креирај нов локал"><i class="pt-2 fa fa-plus-circle"></i></a>
         </div>
     @endif
     <div class="container">
