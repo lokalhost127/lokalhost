@@ -7,30 +7,30 @@
     <div id="createapp" class="container">
         <form action="/admin/locations" method="post">
         <div class="row">
-            <div v-if="!createImage" class="col-md-3">
+            <div v-bind:style="showInfo" class="col-md-3">
 
                 {{ csrf_field() }}
                 <div class="form-group text-light">
                     <label for="name">Име на локација</label>
-                    <input type="text" class="form-control form-control-sm" id="locationName" name="name">
+                    <input @change="saveLocationName" v-bind:value="locationName" type="text" class="form-control form-control-sm" id="locationName" name="name">
                 </div>
                 <div class="form-group text-light">
                     <label for="address">Адреса</label>
-                    <input type="text" class="form-control form-control-sm" id="locationAddress" name="address">
+                    <input @change="saveLocationAddress" v-bind:value="locationAddress" type="text" class="form-control form-control-sm" id="locationAddress" name="address">
                 </div>
 
                 <div class="form-group text-light">
-                    <label for="capacity">Контакт</label>
-                    <input type="text"  class="form-control form-control-sm" id="locationContact" name="contact">
+                    <label for="contact">Контакт</label>
+                    <input @change="saveLocationContact" v-bind:value="locationContact" type="text"  class="form-control form-control-sm" id="locationContact" name="contact">
                 </div>
 
                 <div class="form-group text-light">
                     <label for="description">Опис</label>
-                    <textarea maxlength="170"  class="form-control form-control-sm" id="locationDescription" style="resize: none" rows="5" name="description"></textarea>
+                    <textarea @change="saveLocationDescription" v-bind:value="locationDescription" maxlength="170"  class="form-control form-control-sm" id="locationDescription" style="resize: none" rows="5" name="description"></textarea>
                 </div>
 
                 </div>
-            <div v-if="createImage" class="col-md-3">
+            <div  v-bind:style="showImageInfo" class="col-md-3">
                 {{ csrf_field() }}
                 <div class="form-group" @change="handleChange">
                     <label class="text-light" for="sel1">Избери елемент</label>
@@ -119,16 +119,16 @@
         <div class="row">
 
                 <div class="col-md-3 text-center pr-4" style="color: white ;line-height: 1.3; font-size: 15px;">
-                    <div class="mt-3">
+                    <div class="mt-3" v-bind:style="showImageInfo">
                         <button v-on:click="add()" type=button class="btn btn-primary">Внеси</button>
                         <button v-on:click="deleteEl()" type=button class="btn btn-primary">Избриши</button>
                     </div>
                 </div>
                 <div class="col-md-9 mt-3 text-right">
                     <div class="float-right">
-                        <button v-on:click="createImage = false" type=button class="btn btn-primary">Внеси Инфо</button>
+                        <button v-on:click="toggleView('info')" type=button class="btn btn-primary">Внеси Инфо</button>
 
-                        <button  v-on:click="createImage = true" type=button class="btn btn-primary">Внеси Слика</button>
+                        <button  v-on:click="toggleView('image')" type=button class="btn btn-primary">Внеси Слика</button>
                         <button type="submit" class="btn btn-danger">Креирај локација</button></div>
                     @if ($errors->any())
                         <div class="alert alert-danger">
