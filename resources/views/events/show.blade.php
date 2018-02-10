@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="col-md-9" style="">
-                <img src="{{asset('assets/img/peshtani-map.jpg')}}">
+                <img src="{{asset('lokal.jpg')}}">
             </div>
 
         </div>
