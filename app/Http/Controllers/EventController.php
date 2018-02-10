@@ -11,6 +11,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 class EventController extends Controller
 {
@@ -37,7 +39,7 @@ class EventController extends Controller
 
     public function store(Request $request, Location $location)
     {
-
+        print "store";
         //Validate
         $this->validate($request, [
             'name' => 'required|min:3',
@@ -67,18 +69,38 @@ class EventController extends Controller
         return redirect('/admin/locations/' . $location->id . '/events/' . $event->id);
     }
 
-    public function show(Location $location, Event $event)
+    public function show(Location $location, Event $event, Table $table)
     {
         if ($event->to > Carbon::now()) {
             $event->to = "Expired";
         }
-        return view('events.show', compact('event', $event, 'location', $location));
+        $tables = Table::where('event_id', $event->id)->get();
+        return view('events.show', compact('event', $event, 'location', $location, 'tables', $tables));
     }
 
 
     public function update(Request $request, Location $location, Event $event)
     {
-        //Validate
+
+        $admin_id = Auth::guard('admin')->id();
+        if($admin_id=="") {
+            print "REQUEST TABLE " . $request->table;
+            //Validate
+
+            $user_id = Auth::id();
+            $table = Table::where('id', $request->table)->first();
+            $table->reserved = true;
+            $table->user_id = $user_id;
+            $request->session()->flash('message', 'Успешна резервација');
+            $table->save();
+            return redirect('/locations/' . $location->id . '/events');
+
+        }
+        else {
+
+
+        $tables = Table::where('event_id', $event->id)->get();
+        print "update ";
         $this->validate($request, [
             'name' => 'required|min:3',
             'from' => 'required',
@@ -92,8 +114,9 @@ class EventController extends Controller
         $event->price = $request->price;
         $event->location_id = $location->id;
         $event->save();
-        $request->session()->flash('message', 'Successfully modified the location!');
+        $request->session()->flash('message', 'Настанот е успешно ажуриран');
         return redirect('admin/locations/' . $location->id . '/events');
+        }
     }
 
 
@@ -106,9 +129,7 @@ class EventController extends Controller
     {
         Table::where('event_id', $event->id)->delete();
         $event->delete();
-        $request->session()->flash('message', 'Successfully deleted the event!');
+        $request->session()->flash('message', 'Успешно избришан настан!');
         return back();
     }
-
-
 }

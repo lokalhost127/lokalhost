@@ -27,13 +27,33 @@
                 <p class="text-left"><strong>Цена за влез:</strong> {{ $event-> price }} </p>
                 <br><br><br>
                 <hr style="border-color: rgba(155,160,190,0.95);">
+                <form action="/locations/{{$location->id}}/events/{{$event->id}}" method="post">
+                    <input type="hidden" name="_method" value="PUT">
+                    {{ csrf_field() }}
+                    Резервирај маса со број: <br><select id="table" name="table" class="form-control form-control-sm">
+                        @foreach($tables as $table)
+                            @if($table->reserved==0)
+                                <option value="{{ $table->id }}">
+                                    {{ $table->id }}
+                                </option>
+                            @endif
+                        @endforeach
+                        <input type="hidden" name="_method" value="PUT">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        @if($event-> to > Carbon\Carbon::now() && Auth::guard('web')->check())
+                            <input type="submit" class="btn btn-danger" value="Резервирај" style="margin-top: 30px"/>
+                        @else
+                            <input type="submit" disabled class="btn btn-danger" value="Резервирај" style="margin-top: 30px"/>
+                        @endif
+                    </select>
+                </form>
                 <div class="row">
                 </div>
             </div>
             <div class="col-md-9" style="">
                 <img src="{{asset('lokal.jpg')}}">
             </div>
-
         </div>
     </div>
+
 @endsection
