@@ -92,7 +92,7 @@ class EventController extends Controller
         $event->price = $request->price;
         $event->location_id = $location->id;
         $event->save();
-        $request->session()->flash('message', 'Successfully modified the location!');
+        $request->session()->flash('message', 'Настанот е успешно ажуриран');
         return redirect('admin/locations/' . $location->id . '/events');
     }
 
@@ -106,7 +106,7 @@ class EventController extends Controller
     {
         Table::where('event_id', $event->id)->delete();
         $event->delete();
-        $request->session()->flash('message', 'Successfully deleted the event!');
+        $request->session()->flash('message', 'Успешно избришан настан!');
         return back();
     }
 

@@ -21,7 +21,6 @@ class CreateLocationsTable extends Migration
             $table->string("description");
             $table->integer("capacity");
             $table->timestamps();
-
         });
     }
 

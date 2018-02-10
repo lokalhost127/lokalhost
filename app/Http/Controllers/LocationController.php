@@ -85,7 +85,7 @@ class LocationController extends Controller
         $location->capacity = $request->capacity;
         $location->address = $request->address;
         $location->save();
-        $request->session()->flash('message', 'Successfully modified the location!');
+        $request->session()->flash('message', 'Локалот е успешно ажуриран!');
         return redirect('admin/locations');
     }
 
