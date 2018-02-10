@@ -7,7 +7,8 @@
     @endif
     <div>
 
-        <a class="add-local" href="admin/locations/create" title="Креирај нов локал"><i class=" pt-2 fa fa-plus-circle"></i></a>
+        <a class="add-local" href="admin/locations/create" title="Креирај нов локал"><i
+                    class=" pt-2 fa fa-plus-circle"></i></a>
     </div>
     <div class="container">
         <div class="container-fluid">
@@ -27,16 +28,57 @@
                             <a href="locations/{{$location->id}}/edit" class="btn btn-sm btn-outline-warning"
                                style="width: 95px">Промени</a>
                         </div>
+
                         <div class="col-sx-3">
-                            <a href="locations/{{$location->id}}/delete" class="btn btn-sm btn-outline-danger"
-                               style="width: 95px">Избриши</a>
+
+                            <a class="btn btn-sm btn-outline-danger" data-toggle="modal"
+                               data-target="#modal-delete-{{ $location->id }}" style="width: 95px">Избриши</a>
+
                         </div>
+
                     </div>
                     <div class="card-separator"></div>
+                </div>
+
+
+                {{--modal stuff--}}
+
+
+            <!-- The Modal -->
+                <div class="modal fade" id="modal-delete-{{ $location->id }}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Избриши локација?</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                {{$location->id}}
+                                <form action="{{url('admin/locations', [$location->id])}}"
+                                      method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Откажи</button>
+
+                                    <button type="submit" class="btn btn-danger">
+                                        Избриши
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>
     </div>
+
+
 @endsection
 @else
 @section('content')
@@ -60,3 +102,4 @@
     </div>
 @endsection
 @endif
+
