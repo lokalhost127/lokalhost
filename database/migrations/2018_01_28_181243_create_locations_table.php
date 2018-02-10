@@ -23,7 +23,6 @@ class CreateLocationsTable extends Migration
             $table->string("contact");
             $table->integer("capacity");
             $table->timestamps();
-
         });
     }
 

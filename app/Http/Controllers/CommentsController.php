@@ -27,7 +27,7 @@ class CommentsController extends Controller
     public function destroy(Request $request, Location $location, Comment $comment)
     {
         $comment->delete();
-        $request->session()->flash('message', 'Successfully deleted the comment!');
+        $request->session()->flash('message', 'Успешно избришан коментар');
         return back();
     }
 

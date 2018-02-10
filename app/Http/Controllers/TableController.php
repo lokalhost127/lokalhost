@@ -64,7 +64,7 @@ class TableController extends Controller
         $table->user_id = $user_id;
         $table->save();
 
-        $request->session()->flash('message', 'Reserved table for event!');
+        $request->session()->flash('message', 'Успешна резервација');
         $tables = Table::where('event_id', $event->id)->get();
 
         return view('tables.index', compact('tables', $tables, 'location', $location, 'event', $event));
@@ -79,7 +79,7 @@ class TableController extends Controller
     public function destroy(Request $request, Location $location)
     {
         $location->delete();
-        $request->session()->flash('message', 'Successfully deleted the location!');
+        $request->session()->flash('message', 'Успешно избришана маса!');
         return redirect('/admin/locations');
     }
 
