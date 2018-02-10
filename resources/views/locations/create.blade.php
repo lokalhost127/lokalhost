@@ -119,7 +119,7 @@
         <div class="row">
 
                 <div class="col-md-3 text-center pr-4" style="color: white ;line-height: 1.3; font-size: 15px;">
-                    <div class="mt-3" v-bind:style="showImageInfo">
+                    <div class="mt-3" v-bind:style="showImage">
                         <button v-on:click="add()" type=button class="btn btn-primary">Внеси</button>
                         <button v-on:click="deleteEl()" type=button class="btn btn-primary">Избриши</button>
                     </div>
