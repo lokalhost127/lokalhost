@@ -98,7 +98,7 @@ class LocationController extends Controller
     public function destroy(Request $request, Location $location)
     {
         $location->delete();
-        $request->session()->flash('message', 'Successfully deleted the location!');
+        $request->session()->flash('message', 'Локалот е успешно избришан!');
         return redirect('/admin/locations');
     }
 
