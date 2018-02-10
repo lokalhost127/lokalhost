@@ -8,7 +8,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Auth;
+use File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class LocationController extends Controller
 {
@@ -52,8 +54,6 @@ class LocationController extends Controller
             'image' => 'required',
         ]);
 
-        //File::put($path,$contents); , contents e vo $request->image
-
         $location = Location::create(['name' => $request->name,
             'description' => $request->description,
             'address' => $request->address,
@@ -61,8 +61,13 @@ class LocationController extends Controller
             'admin_id' => $admin_id,
             'rating' => 0,
             'contact' => $request->contact,
-//            'image' => // ovde trebit imeto da se napishit na slikata
+            'image' => ""
         ]);
+
+        $location -> image = "lokal" . $location->id . ".svg";
+        $location-> save();
+        Storage::put( "public/" . $location->image , $request->image,'public');
+
         return redirect('/admin/locations/' . $location->id);
     }
 

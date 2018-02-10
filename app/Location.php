@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     //
-    protected $fillable = ['name', 'description', 'capacity', 'address', 'admin_id', 'rating'];
+    protected $fillable = ['name', 'description', 'capacity', 'address', 'admin_id', 'rating', 'image', 'contact'];
 
     public function admin()
     {

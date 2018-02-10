@@ -18,7 +18,9 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-Route::resource('locations', 'LocationController');
+Route::resource('locations', 'LocationController', ['only' => [
+    'index', 'show'
+]]);
 Route::resource('locations.events', 'EventController');
 Route::resource('events', 'EventController');
 Route::resource('locations.events.tables', 'TableController');
