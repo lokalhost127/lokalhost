@@ -4,7 +4,10 @@
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
-    <table class="table">
+    <br>
+    <div class="container">
+        <div class="col-md-3">
+            <table class="table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -47,5 +50,10 @@
         @endforeach
         </tbody>
     </table>
+        </div>
+        <div class="col-md-9">
+
+        </div>
+    </div>
 @endsection
 

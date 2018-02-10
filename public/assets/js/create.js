@@ -1,4 +1,6 @@
 var svgCanvas = document.getElementById("svg-canvas");
+var rateX = 403/841;
+var rateY = 206/429;
 
 const app = new Vue({
     el: '#createapp',
@@ -7,7 +9,7 @@ const app = new Vue({
         svgcontent: "",
         showInfo: "display: block",
         showImageInfo: "display: none",
-
+        tempContent: "",
         step: 5,
         createImage: true,
         createdObjects: [],
@@ -21,8 +23,8 @@ const app = new Vue({
         T: "",
         enum: 0,
         components: {
-            "table" : [' <g>\n' +
-            '   <g id="_275378802912">\n' +
+            "table" : [' <g name="masa">\n' +
+            '   <g>\n' +
             '   <path fill="#2F3457" d="M28 44l9 0c1,0 1,1 1,2l0 2c0,1 0,2 -1,2l-9 0c-1,0 -2,-1 -2,-2l0 -2c0,-1 1,-2 2,-2zm-1 10l11 0c0,0 0,-1 0,-1l0 -1c0,-1 0,-1 0,-1l-11 0c-1,0 -1,0 -1,1l0 1c0,0 0,1 1,1z"/>\n' +
             '   <g>\n' +
             '    <rect fill="#7D89B3" x="19" y="20" width="26.1417" height="22.5658" rx="3" ry="4"/>\n' +
@@ -33,7 +35,7 @@ const app = new Vue({
             '   <path fill="#2F3457" d="M17 36l0 -9c0,-1 -1,-2 -2,-2l-2 0c-1,0 -2,1 -2,2l0 9c0,1 1,1 2,1l2 0c1,0 2,0 2,-1zm-10 1l0 -11c0,-1 0,-1 1,-1l1 0c0,0 1,0 1,1l0 11c0,0 -1,0 -1,0l-1 0c-1,0 -1,0 -1,0z"/>\n' +
             '  </g>\n' +
             ' </g>','\n' +
-            '  <g id="_275377226480">\n' +
+            '  <g name="masa">\n' +
             '   <path fill="#2F3457" d="M17 42l9 0c1,0 2,1 2,2l0 2c0,1 -1,2 -2,2l-9 0c-1,0 -2,-1 -2,-2l0 -2c0,-1 1,-2 2,-2zm-1 10l11 0c0,0 1,-1 1,-1l0 -1c0,0 -1,-1 -1,-1l-11 0c-1,0 -1,1 -1,1l0 1c0,0 0,1 1,1z"/>\n' +
             '   <g>\n' +
             '    <rect fill="#7D89B3" x="8" y="18" width="26.1417" height="22.5658" rx="3" ry="4"/>\n' +
@@ -41,9 +43,9 @@ const app = new Vue({
             '   </g>\n' +
             '   <path fill="#2F3457" d="M17 17l9 0c1,0 1,-1 1,-3l0 -2c0,-1 0,-2 -1,-2l-9 0c-1,0 -2,1 -2,2l0 2c0,2 1,3 2,3zm-1 -11l11 0c0,0 0,1 0,1l0 1c0,1 0,1 0,1l-11 0c-1,0 -1,0 -1,-1l0 -1c0,0 0,-1 1,-1z"/>\n' +
             '  </g>',
-                '<g >\n' +
+                '<g name="masa">\n' +
                 ' \n' +
-                '  <g id="_275513303312">\n' +
+                '  <g >\n' +
                 '   <rect fill="#59405A" x="28" y="10" width="41.6879" height="35.9854" rx="5" ry="7"/>\n' +
                 '   <rect fill="#745975" x="30" y="12" width="37.1698" height="32.0853" rx="5" ry="6"/>\n' +
                 '   <path fill="#2F3457" d="M25 42l0 -27c0,-2 -1,-5 -3,-5l-4 0c-2,0 -3,3 -3,5l0 27c0,2 1,4 3,4l4 0c2,0 3,-2 3,-4zm-16 2l0 -32c0,-1 1,-2 1,-2l2 0c1,0 1,1 1,2l0 32c0,2 0,2 -1,2l-2 0c0,0 -1,0 -1,-2z"/>\n' +
@@ -54,7 +56,7 @@ const app = new Vue({
                 '   <rect fill="#2F3457" x="80" y="34" width="5.42344" height="4.70099"/>\n' +
                 '  </g>\n' +
                 ' </g>',
-            '<g>\n' +
+            '<g name="masa">\n' +
             '\n' +
             '  <g>\n' +
             '   <path fill="#526A8F" d="M74 44l0 -30c0,-3 1,-6 3,-6l4 0c2,0 3,3 3,6l0 3 2 0 0 -6c0,-2 0,-3 1,-3l2 0c0,0 1,1 1,3l0 37c0,1 -1,2 -1,2l-2 0c-1,0 -1,-1 -1,-2l0 -7 -2 0 0 3c0,4 -1,6 -3,6l-4 0c-2,0 -3,-2 -3,-6l0 0zm-37 -36l27 0c4,0 7,4 7,8l0 26c0,5 -3,8 -7,8l-27 0c-4,0 -7,-3 -7,-8l0 -26c0,-4 3,-8 7,-8zm-22 28l2 0 0 -13 -2 0 0 13zm2 5l-2 0 0 7c0,1 0,2 -1,2l-2 0c0,0 -1,-1 -1,-2l0 -37c0,-2 1,-3 1,-3l2 0c1,0 1,1 1,3l0 6 2 0 0 -3c0,-3 1,-6 3,-6l4 0c2,0 3,3 3,6l0 31c0,3 -1,5 -3,5l-4 0c-2,0 -3,-2 -3,-5l0 -4zm69 -5l0 -13 -2 0 0 13 2 0z"/>\n' +
@@ -68,7 +70,7 @@ const app = new Vue({
             '   <rect fill="#2F3457" x="79" y="34" width="5.41195" height="4.69102"/>\n' +
             '  </g>\n' +
             ' </g>'           ,
-                ' <g>\n' +
+                ' <g name="masa">\n' +
                 '  \n' +
                 '  <path fill="#526A8F" d="M33 25l28 0c2,0 4,3 4,6l0 20c0,3 -2,6 -4,6l-28 0c-3,0 -5,-3 -5,-6l0 -20c0,-3 2,-6 5,-6l0 0zm19 -2l-11 0c-1,0 -2,-1 -2,-3l0 -4c0,0 0,0 0,-1l-2 0 0 -5 2 0 0 -2c0,0 0,-1 1,-1l13 0c1,0 1,1 1,1l0 2 2 0 0 5 -2 0c0,1 0,1 0,1l0 4c0,2 -1,3 -2,3zm0 -12l-11 0 0 2 11 0 0 -2zm0 48l-11 0c-1,0 -2,1 -2,3l0 4c0,0 0,1 0,1l-2 0 0 6 2 0 0 1c0,0 0,1 1,1l13 0c1,0 1,-1 1,-1l0 -1 3 0 0 -6 -3 0c0,0 0,-1 0,-1l0 -4c0,-2 -1,-3 -2,-3zm1 12l-12 0 0 -2 11 0c0,0 0,0 1,0l0 2zm15 -24l0 -11c0,-2 1,-2 3,-2l4 0c0,0 1,0 1,0l0 -3 5 0 0 3 2 0c0,0 1,0 1,0l0 14c0,0 -1,1 -1,1l-2 0 0 2 -5 0 0 -2c0,0 -1,0 -1,0l-4 0c-2,0 -3,-1 -3,-2zm12 -1l0 -10 -2 0 0 10 2 0zm-54 1l0 -11c0,-2 -1,-2 -3,-2l-4 0c-1,0 -1,0 -2,0l0 -3 -5 0 0 3 -1 0c0,0 -1,0 -1,0l0 14c0,0 1,1 1,1l1 0 0 3 5 0 0 -3c1,0 1,0 2,0l4 0c2,0 3,-1 3,-2zm-12 0l0 -11 2 0 0 11c0,0 0,0 0,0l-2 0z"/>\n' +
                 '  <g id="_647547592288">\n' +
@@ -315,7 +317,7 @@ const app = new Vue({
                 {
                     this.tableNumber = Number(this.tableNumber) + 1;
                 }
-                alert(this.tableNumber);
+
                 var objectHTML = "<g transform='translate(0,0)' id='" + object + "'>" + this.components[att[0]][att[1]] + "</g>";
                 // alert(objectHTML);
 
@@ -419,7 +421,45 @@ const app = new Vue({
         },
         savesvg: function()
         {
+            this.tempContent = svgCanvas.innerHTML;
+            var masi = document.getElementsByName('masa');
+            if(masi.length>0) {
+                var numbers = "";
+
+                svgCanvas.innerHTML += "<g id='tableNumbers'> </g>";
+                var tableNumberElement = document.getElementById('tableNumbers');
+                for (var i = 0; i < masi.length; i++) {
+                    var parent = masi[i].parentNode;
+                    var transform = parent.getAttribute('transform');
+                    var idx1 = transform.indexOf("(");
+                    var idx2 = transform.indexOf(")");
+                    transform = transform.substring(idx1 + 1, idx2);
+                    var xy = transform.split(',');
+                    var height = Number(masi[i].getBoundingClientRect().height)/2;
+                    var width = Number(masi[i].getBoundingClientRect().width)/2;
+
+
+                    var x = Number(xy[0]) + width * rateX;
+                    var y = Number(xy[1]) + height * rateY;
+
+                    alert(xy[0] +" " + xy[1]);
+                    alert(width + " " + height);
+                    var tx = x + 1;
+                    var ty = y + 12;
+                    numbers += '<rect x="' + x + '" y="'+ y + '" width="15" height="15" style="fill:#676c9e;fill-opacity:0.9"></rect><text x="' + tx + '" y="' + ty + '" font-size="12" fill = "white">' + (i+1) + '</text>';
+
+                }
+
+                tableNumberElement.innerHTML += numbers;
+            }
+
             this.svgcontent = document.getElementById('svgContent').innerHTML
+        },
+
+        deleteNumbers: function()
+        {
+            svgCanvas.innerHTML=this.tempContent;
+
         }
 
 
