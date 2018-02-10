@@ -39,7 +39,6 @@ class EventController extends Controller
 
     public function store(Request $request, Location $location)
     {
-        print "store";
         //Validate
         $this->validate($request, [
             'name' => 'required|min:3',
