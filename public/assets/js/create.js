@@ -4,12 +4,10 @@ const app = new Vue({
     el: '#createapp',
 
     data:{
+        svgcontent: "",
         showInfo: "display: block",
         showImageInfo: "display: none",
-        locationName: "",
-        locationAddress: "",
-        locationContact: "",
-        locationDescription: "",
+
         step: 5,
         createImage: true,
         createdObjects: [],
@@ -323,6 +321,7 @@ const app = new Vue({
 
                 svgCanvas.innerHTML += objectHTML;
 
+
             }
         },
         handleChange: function(e) {
@@ -394,8 +393,8 @@ const app = new Vue({
                     this.selectedCreatedItem = this.createdObjects[idx -1];
                 }
 
-                alert(this.selectedCreatedItem);
                 this.createdObjects.splice(idx,1);
+
 
 
             }
@@ -403,22 +402,7 @@ const app = new Vue({
 
 
         },
-        saveLocationName: function(e)
-        {
-            this.locationName = e.target.value;
-        },
-        saveLocationAddress: function(e)
-        {
-            this.locationAddress = e.target.value;
-        },
-        saveLocationContact: function(e)
-        {
-            this.locationContact = e.target.value;
-        },
-        saveLocationDescription: function(e)
-        {
-            this.locationDescription= e.target.value;
-        },
+
         toggleView: function(att){
 
             if(att === 'info')
@@ -432,7 +416,12 @@ const app = new Vue({
                 this.showImageInfo =  "display: block;";
             }
 
+        },
+        savesvg: function()
+        {
+            this.svgcontent = document.getElementById('svgContent').innerHTML
         }
+
 
 
 

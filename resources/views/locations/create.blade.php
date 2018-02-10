@@ -12,21 +12,26 @@
                 {{ csrf_field() }}
                 <div class="form-group text-light">
                     <label for="name">Име на локација</label>
-                    <input @change="saveLocationName" v-bind:value="locationName" type="text" class="form-control form-control-sm" id="locationName" name="name">
+                    <input  type="text" class="form-control form-control-sm" id="locationName" name="name">
                 </div>
                 <div class="form-group text-light">
                     <label for="address">Адреса</label>
-                    <input @change="saveLocationAddress" v-bind:value="locationAddress" type="text" class="form-control form-control-sm" id="locationAddress" name="address">
+                    <input  type="text" class="form-control form-control-sm" id="locationAddress" name="address">
                 </div>
 
                 <div class="form-group text-light">
                     <label for="contact">Контакт</label>
-                    <input @change="saveLocationContact" v-bind:value="locationContact" type="text"  class="form-control form-control-sm" id="locationContact" name="contact">
+                    <input type="text"  class="form-control form-control-sm" id="locationContact" name="contact">
                 </div>
 
                 <div class="form-group text-light">
                     <label for="description">Опис</label>
-                    <textarea @change="saveLocationDescription" v-bind:value="locationDescription" maxlength="170"  class="form-control form-control-sm" id="locationDescription" style="resize: none" rows="5" name="description"></textarea>
+                    <textarea  maxlength="170"  class="form-control form-control-sm" id="locationDescription" style="resize: none" rows="5" name="description"></textarea>
+                </div>
+
+                <div class="form-group" style="display: none">
+                    <textarea v-bind:value="svgcontent" name="image"></textarea>
+                    <input type="number" name="capacity" v-bind:value="tableNumber">
                 </div>
 
                 </div>
@@ -85,8 +90,8 @@
 
             </div>
             <div class="col-md-9">
-                <div>
-                <svg width="841px" height="429px" id="svg-canvas" viewBox="0 0 403 206">
+                <div id="svgContent">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="841px" height="429px" id="svg-canvas" viewBox="0 0 403 206">
 
                     <defs>
                         <linearGradient id="bg-0-gradient" gradientUnits="userSpaceOnUse" x1="197.491" y1="1.29375" x2="197.491" y2="206.901">
@@ -119,7 +124,7 @@
         <div class="row">
 
                 <div class="col-md-3 text-center pr-4" style="color: white ;line-height: 1.3; font-size: 15px;">
-                    <div class="mt-3" v-bind:style="showImage">
+                    <div class="mt-3" v-bind:style="showImageInfo">
                         <button v-on:click="add()" type=button class="btn btn-primary">Внеси</button>
                         <button v-on:click="deleteEl()" type=button class="btn btn-primary">Избриши</button>
                     </div>
@@ -129,21 +134,47 @@
                         <button v-on:click="toggleView('info')" type=button class="btn btn-primary">Внеси Инфо</button>
 
                         <button  v-on:click="toggleView('image')" type=button class="btn btn-primary">Внеси Слика</button>
-                        <button type="submit" class="btn btn-danger">Креирај локација</button></div>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
+                        {{--<button type="submit" class="btn btn-danger">Креирај локација</button>--}}
+                        <button type="button" v-on:click="savesvg" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Креирај локација
+                        </button>
+                    </div>
 
 
                 </div>
         </div>
+            {{--modal stuff--}}
+
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Креирај на локација?</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Откажи</button>
+                            <button type="submit" class="btn btn-danger">Прифати</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div><br>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
     </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.27/vue.js"></script>
