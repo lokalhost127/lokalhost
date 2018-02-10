@@ -47,16 +47,21 @@ class LocationController extends Controller
             'name' => 'required|min:3',
             'description' => 'required',
             'address' => 'required',
-            'capacity' => 'required'
+            'capacity' => 'required',
+            'contact' => 'required',
+            'image' => 'required',
         ]);
 
+        //File::put($path,$contents); , contents e vo $request->image
 
         $location = Location::create(['name' => $request->name,
             'description' => $request->description,
             'address' => $request->address,
             'capacity' => $request->capacity,
             'admin_id' => $admin_id,
-            'rating' => 0
+            'rating' => 0,
+            'contact' => $request->contact,
+//            'image' => // ovde trebit imeto da se napishit na slikata
         ]);
         return redirect('/admin/locations/' . $location->id);
     }
