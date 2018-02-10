@@ -10,7 +10,6 @@
 |
 */
 
-use App\Http\Middleware\CheckMyReservations;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'HomeController@index');

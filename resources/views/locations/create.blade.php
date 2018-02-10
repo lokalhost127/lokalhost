@@ -91,7 +91,8 @@
             </div>
             <div class="col-md-9">
                 <div id="svgContent">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="841px" height="429px" id="svg-canvas" viewBox="0 0 403 206">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="841px" height="429px" id="svg-canvas"
+                         viewBox="0 0 403 206">
 
                     <defs>
                         <linearGradient id="bg-0-gradient" gradientUnits="userSpaceOnUse" x1="197.491" y1="1.29375" x2="197.491" y2="206.901">
@@ -135,7 +136,8 @@
 
                         <button  v-on:click="toggleView('image')" type=button class="btn btn-primary">Внеси Слика</button>
                         {{--<button type="submit" class="btn btn-danger">Креирај локација</button>--}}
-                        <button type="button" v-on:click="savesvg" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        <button type="button" v-on:click="savesvg" class="btn btn-primary" data-toggle="modal"
+                                data-target="#myModal">
                             Креирај локација
                         </button>
                     </div>
