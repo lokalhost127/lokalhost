@@ -5,7 +5,7 @@
         <br>
         <div class="row">
             <div class="col-md-3 text-center pr-4 text-light" style="line-height: 1.3; font-size: 15px;">
-                <i class="fa fa-arrow-circle-o-down"></i>
+                <i class="fa fa-coffee fa-2x"></i>
                 <p class="h3 text-uppercase">{{ $event->name }}</p>
                 <hr style="border-color: rgba(155,160,190,0.95);">
                 <p class="text-justify"><strong>Локал: </strong>{{ $event->location->name }}</p>
@@ -16,6 +16,8 @@
                         <strong>Датум: </strong> {{ Carbon\Carbon::parse($event->from)->format('d M Y') }}</p>
                     <p class="text-left">
                         <strong>Час: </strong> {{ Carbon\Carbon::parse($event->from)->format('H:i') }}</p>
+                    <p class="text-left">
+                        <strong>Контакт: </strong> {{ $event->location->contact }}</p>
 
                 @endif
                 {{-- @if($event->to=="Expired")
@@ -25,7 +27,6 @@
                          - {{ Carbon\Carbon::parse($event->to)->format('H:i') }}</p>
                  @endif--}}
                 <p class="text-left"><strong>Цена за влез:</strong> {{ $event-> price }} </p>
-                <br><br><br>
                 <hr style="border-color: rgba(155,160,190,0.95);">
                 <?php $alreadyReserved=0?>
                 @foreach($tables as $table)
@@ -62,6 +63,12 @@
             </div>
             <div class="col-md-9" style="">
                 <img src={{asset('storage/'.$location->image)}}>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-3">
+            <p style="color: #ededed">Забелешка: Можете да резервирате само една маса. Доколку сакате да резервирате повеќе, контактирајте не! Ви благодариме!</p>
             </div>
         </div>
     </div>
