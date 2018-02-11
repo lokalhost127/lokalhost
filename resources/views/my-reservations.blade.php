@@ -36,7 +36,7 @@
                         <div class="social">
                             <ul>
                                 <h3 style="color: #445e83">Маса број:</h3>
-                                <h2 style="color: #445e83"><b>{{$event->id}}</b></h2>
+                                <h2 style="color: #445e83"><b>{{$event->value}}</b></h2>
                             </ul>
                         </div>
                     </li>

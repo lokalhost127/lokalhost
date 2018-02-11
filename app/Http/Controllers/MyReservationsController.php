@@ -17,6 +17,7 @@ class MyReservationsController extends Controller
     {
         $user_id = Auth::id();
         $events = Table::with('event')->where('user_id',$user_id)->get();
+
         return view('my-reservations', compact('events', $events));
     }
 

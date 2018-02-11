@@ -59,9 +59,10 @@ class TableController extends Controller
     public function update(Request $request, Location $location, Event $event, Table $table)
     {
         $user_id = Auth::id();
-
+        echo($user_id);
         $table->reserved = true;
         $table->user_id = $user_id;
+
         $table->save();
 
         $request->session()->flash('message', 'Успешна резервација');

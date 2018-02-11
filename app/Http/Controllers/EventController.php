@@ -90,6 +90,7 @@ class EventController extends Controller
             $table = Table::where('id', $request->table)->first();
             $table->reserved = true;
             $table->user_id = $user_id;
+            $table->value = $request->tableNumber;
             $request->session()->flash('message', 'Успешна резервација');
             $table->save();
             return redirect('/events');
