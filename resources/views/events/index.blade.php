@@ -112,7 +112,7 @@
                                     </button>
                                 </a>
                             @else
-                                <a href="events/{{$event->id}}/tables">
+                                <a href="events/{{$event->id}}">
                                     <button type="button" class="btn btn-primary"
                                             style="margin-top: 35px; margin-bottom: 25px"> Резервирај
                                     </button>
