@@ -92,7 +92,7 @@ class EventController extends Controller
             $table->user_id = $user_id;
             $request->session()->flash('message', 'Успешна резервација');
             $table->save();
-            return redirect('/locations/' . $location->id . '/events');
+            return redirect('/events');
 
         }
         else {

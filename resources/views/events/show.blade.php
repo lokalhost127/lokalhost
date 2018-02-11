@@ -31,16 +31,18 @@
                     <input type="hidden" name="_method" value="PUT">
                     {{ csrf_field() }}
                     Резервирај маса со број: <br><select id="table" name="table" class="form-control form-control-sm">
-                        @foreach($tables as $table)
+                        <?php $numFreeTables=0?>
+                        @foreach($tables as $key=>$table)
                             @if($table->reserved==0)
                                 <option value="{{ $table->id }}">
-                                    {{ $table->id }}
+                                    {{ ++$key }}
+                                    <?php $numFreeTables++ ?>
                                 </option>
                             @endif
                         @endforeach
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        @if($event-> to > Carbon\Carbon::now() && Auth::guard('web')->check())
+                        @if($event-> to > Carbon\Carbon::now() && Auth::guard('web')->check() && $numFreeTables>0)
                             <input type="submit" class="btn btn-danger" value="Резервирај" style="margin-top: 30px"/>
                         @else
                             <input type="submit" disabled class="btn btn-danger" value="Резервирај" style="margin-top: 30px"/>
@@ -51,7 +53,7 @@
                 </div>
             </div>
             <div class="col-md-9" style="">
-                <img src="{{asset('lokal.jpg')}}">
+                <img src={{asset('storage/'.$location->image)}}>
             </div>
         </div>
     </div>
