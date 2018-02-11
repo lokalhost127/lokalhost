@@ -25,7 +25,7 @@
                                style="width: 95px">Види локал</a>
                         </div>
                         <div class="col-sx-3">
-                            <a href="locations/{{$location->id}}/edit" class="btn btn-sm btn-outline-warning"
+                            <a href="admin/locations/{{$location->id}}/edit" class="btn btn-sm btn-outline-warning"
                                style="width: 95px">Промени</a>
                         </div>
 

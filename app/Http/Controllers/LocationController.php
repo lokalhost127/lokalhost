@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Location;
+use App\Table;
 use Auth;
 use File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
