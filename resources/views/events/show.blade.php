@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container px-1 mx-6">
+    <div id="showEvent" class="container px-1 mx-6">
         <br>
         <div class="row">
             <div class="col-md-3 text-center pr-4 text-light" style="line-height: 1.3; font-size: 15px;">
@@ -38,8 +38,9 @@
 
                 <form action="/locations/{{$location->id}}/events/{{$event->id}}" method="post">
                     <input type="hidden" name="_method" value="PUT">
+
                     {{ csrf_field() }}
-                    Резервирај маса со број: <br><select id="table" name="table" class="form-control form-control-sm">
+                    Резервирај маса со број: <br><select @change="saveTable" id="table" name="table" class="form-control form-control-sm">
                         <?php $numFreeTables=0?>
                         @foreach($tables as $key=>$table)
                             @if($table->reserved==0)
@@ -51,6 +52,7 @@
                         @endforeach
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="tableNumber" v-bind:value="tableNumber">
                         @if($event-> to > Carbon\Carbon::now() && Auth::guard('web')->check() && $numFreeTables>0 &&!$alreadyReserved)
                             <input type="submit" class="btn btn-danger" value="Резервирај" style="margin-top: 30px"/>
                         @else
@@ -72,5 +74,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.27/vue.js"></script>
+    <script src="{{asset('assets/js/sendNumber.js')}}"></script>
 
 @endsection

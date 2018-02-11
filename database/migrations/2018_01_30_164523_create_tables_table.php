@@ -18,6 +18,7 @@ class CreateTablesTable extends Migration
             $table->integer('event_id');
             $table->integer('user_id');
             $table->boolean('reserved');
+            $table->integer('value')->default('0');
             $table->timestamps();
         });
     }
