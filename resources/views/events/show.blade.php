@@ -50,6 +50,14 @@
                                 </option>
                             @endif
                         @endforeach
+                            @foreach($tables as $key=>$table)
+                                @if($table->reserved==0)
+                                    <option value="{{ $table->id }}">
+                                        {{ ++$key }}
+                                        <?php $numFreeTables++ ?>
+                                    </option>
+                                @endif
+                            @endforeach
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="tableNumber" v-bind:value="tableNumber">
