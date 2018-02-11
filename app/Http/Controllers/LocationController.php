@@ -88,7 +88,7 @@ class LocationController extends Controller
 
         $location->name = $request->name;
         $location->description = $request->description;
-        $location->capacity = $request->capacity;
+        $location->contact = $request->contact;
         $location->address = $request->address;
         $location->save();
         $request->session()->flash('message', 'Локалот е успешно ажуриран!');

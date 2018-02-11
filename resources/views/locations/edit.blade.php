@@ -53,8 +53,8 @@
 
                     <div class="form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
                         <label class="sr-only control-label" for="price">Капацитет</label>
-                        <input type="number" value="{{$location->capacity}}" class="form-control" id="locationCapacity"
-                               name="capacity">
+                        <input type="text" value="{{$location->contact}}" class="form-control" id="locationCapacity"
+                               name="contact">
                         @if ($errors->has('price'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('price') }}</strong>

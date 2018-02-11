@@ -155,7 +155,7 @@ const app = new Vue({
             '    <rect fill="url(#id1)" x="9" y="7" width="34.2038" height="34.2044"/>\n' +
             '   </mask>\n' +
             ' </defs>\n' +
-            ' <g\n' +
+            ' <g>\n' +
             '  <metadata id="CorelCorpID_0Corel-Layer"/>\n' +
             '  \n' +
             '  <path fill="#526A8F" mask="url(#id0)" d="M13 8l26 0c2,0 4,1 4,4l0 25c0,3 -2,4 -4,4l-26 0c-2,0 -4,-1 -4,-4l0 -25c0,-3 2,-4 4,-4z"/>\n' +
