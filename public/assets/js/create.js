@@ -244,7 +244,6 @@ const app = new Vue({
     methods: {
 
         right: function () {
-
             if(this.selectedCreatedItem!== "0")
                 {var obj = document.getElementById(this.selectedCreatedItem);
                 var transform = obj.getAttribute('transform');
@@ -254,7 +253,6 @@ const app = new Vue({
                 x = x + this.step;
                 var attribute = "translate(" + x + "," + y + ")";
                 obj.setAttribute('transform' , attribute);}
-
         },
         left: function () {
             if(this.selectedCreatedItem!== "0"){
