@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Location;
+use App\Table;
 use Auth;
 use File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -10,6 +12,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use SebastianBergmann\Environment\Console;
 
 class LocationController extends Controller
 {
@@ -101,7 +104,13 @@ class LocationController extends Controller
 
     public function destroy(Request $request, Location $location)
     {
+        $events = Event::where('location_id',$location->id)->get();
+        foreach ($events as $event){
+            Table::where('event_id', $event->id)->delete();
+        }
+        Event::where('location_id',$location->id)->delete();
         $location->delete();
+
         $request->session()->flash('message', 'Локалот е успешно избришан!');
         return back();
     }

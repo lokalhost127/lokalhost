@@ -5,7 +5,7 @@
         <br>
         <div class="row">
             <div class="col-md-3 text-center pr-4 text-light" style="line-height: 1.3; font-size: 15px;">
-                <i class="fa fa-coffee fa-2x"></i>
+                <i class="fa fa-coffeep fa-2x"></i>
                 <p class="h3 text-uppercase">{{ $event->name }}</p>
                 <hr style="border-color: rgba(155,160,190,0.95);">
                 <p class="text-justify"><strong>Локал: </strong>{{ $event->location->name }}</p>
