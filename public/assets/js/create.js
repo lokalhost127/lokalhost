@@ -172,7 +172,7 @@ const app = new Vue({
             '   <polygon fill="#FFEADD" points="15,11 148,11 148,48 15,48 "/>\n' +
             '  </g>\n' +
             ' </g>'          ,
-                ' <defs>\n' +
+                ' <g><defs>\n' +
                 '    <mask id="mask1">\n' +
                 '      <linearGradient id="gradient1" gradientUnits="userSpaceOnUse" x1="2.63921" y1="56.8213" x2="58.7585" y2="-1.18152">\n' +
                 '       <stop offset="0" stop-opacity="1" stop-color="white"/>\n' +
@@ -202,7 +202,7 @@ const app = new Vue({
                 '   <rect fill="#9F86B6" stroke="#4B4B7F" stroke-width="0.43389" x="45" y="39" width="54.9799" height="13.6419"/>\n' +
                 '   <rect fill="#D5C0DA" stroke="#4B4B7F" stroke-width="0.43389" x="54" y="39" width="36.9011" height="13.6419"/>\n' +
                 '  </g>\n' +
-                ' </g>'
+                ' </g> </g>'
             ]            ,
             "background":['<g>\n' +
             '  <metadata id="CorelCorpID_0Corel-Layer"/>\n' +
