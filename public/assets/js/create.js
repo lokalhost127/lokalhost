@@ -442,8 +442,8 @@ const app = new Vue({
                     var x = Number(xy[0]) + width * rateX;
                     var y = Number(xy[1]) + height * rateY;
 
-                    alert(xy[0] +" " + xy[1]);
-                    alert(width + " " + height);
+                    //alert(xy[0] +" " + xy[1]);
+                    //alert(width + " " + height);
                     var tx = x + 1;
                     var ty = y + 12;
                     numbers += '<rect x="' + x + '" y="'+ y + '" width="15" height="15" style="fill:#676c9e;fill-opacity:0.9"></rect><text x="' + tx + '" y="' + ty + '" font-size="12" fill = "white">' + (i+1) + '</text>';

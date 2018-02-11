@@ -22,7 +22,7 @@ Route::resource('locations', 'LocationController', ['only' => [
 ]]);
 Route::resource('locations.events', 'EventController');
 Route::resource('events', 'EventController');
-Route::resource('locations.events.tables', 'TableController');
+//Route::resource('locations.events.tables', 'TableController');
 Route::resource('events.tables', 'TableController');
 Route::resource('locations.comments', 'CommentsController');
 Route::resource('locations.ratings', 'RatingsController');

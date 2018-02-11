@@ -57,7 +57,6 @@
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                {{$location->id}}
                                 <form action="{{url('admin/locations', [$location->id])}}"
                                       method="POST">
                                     <input type="hidden" name="_method" value="DELETE">

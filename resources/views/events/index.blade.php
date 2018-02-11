@@ -106,7 +106,7 @@
                     <div class="social">
                         <ul>
                             @if($event-> to < $date)
-                                <a href="events/{{$event->id}}/tables">
+                                <a href="events/{{$event->id}}">
                                     <button type="button" disabled class="btn btn-primary"
                                             style="margin-top: 35px; margin-bottom: 25px"> Изминат
                                     </button>
