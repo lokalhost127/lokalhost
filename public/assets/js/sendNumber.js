@@ -7,14 +7,17 @@ const app = new Vue({
     methods: {
 
         saveTable: function(e){
-            var value = e.target.options[e.target.options.selectedIndex].text;
-            this.tableNumber = value;
+            this.tableNumber = e.target.options[e.target.options.selectedIndex].text;
 
+
+        },
+        set: function(){
+            alert("Hello")
         }
+    },
+    created: function() {
+        this.tableNumber = document.getElementById('table').options[0].text;
     }
-
-
-
 
 
 });
