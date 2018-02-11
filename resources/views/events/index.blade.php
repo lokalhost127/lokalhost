@@ -112,7 +112,7 @@
                                     </button>
                                 </a>
                             @else
-                                <a href="events/{{$event->id}}">
+                                <a href="{{ URL::to('/locations/' . $event->location_id . '/events/'. $event->id ) }}">
                                     <button type="button" class="btn btn-primary"
                                             style="margin-top: 35px; margin-bottom: 25px"> Резервирај
                                     </button>

@@ -97,7 +97,6 @@ class EventController extends Controller
         }
         else {
 
-
         $tables = Table::where('event_id', $event->id)->get();
         print "update ";
         $this->validate($request, [

@@ -27,6 +27,14 @@
                 <p class="text-left"><strong>Цена за влез:</strong> {{ $event-> price }} </p>
                 <br><br><br>
                 <hr style="border-color: rgba(155,160,190,0.95);">
+                <?php $alreadyReserved=0?>
+                @foreach($tables as $table)
+                    @if($table->user_id==Auth::guard('web')->id())
+                        <?php $alreadyReserved=1 ?>
+                    @endif
+                @endforeach
+
+
                 <form action="/locations/{{$location->id}}/events/{{$event->id}}" method="post">
                     <input type="hidden" name="_method" value="PUT">
                     {{ csrf_field() }}
@@ -42,7 +50,7 @@
                         @endforeach
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        @if($event-> to > Carbon\Carbon::now() && Auth::guard('web')->check() && $numFreeTables>0)
+                        @if($event-> to > Carbon\Carbon::now() && Auth::guard('web')->check() && $numFreeTables>0 &&!$alreadyReserved)
                             <input type="submit" class="btn btn-danger" value="Резервирај" style="margin-top: 30px"/>
                         @else
                             <input type="submit" disabled class="btn btn-danger" value="Резервирај" style="margin-top: 30px"/>
