@@ -74,7 +74,7 @@
                                           method="POST">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="close" value="&times;"/>
+                                        <input type="submit" class="btn btn-sm btn-danger pull-right" value="&times;"/>
                                     </form>
                                 @endif
                                 {{$comment->user -> name}} commented
@@ -83,9 +83,7 @@
                                 </strong>
                                 <br>
                                 {{$comment-> body}}
-
                             </li>
-
                         @endforeach
                     </ul>
                 </div>
@@ -100,16 +98,16 @@
                             </div>
                             @if(Auth::guard('web')->check())
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit"> Add Comment</button>
+                                    <button class="btn btn-primary" type="submit"> Додади Коментар</button>
                                 </div>
                             @elseif(Auth::guard('admin')->check())
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit" disabled> Add Comment</button>
+                                    <button class="btn btn-primary" type="submit" disabled> Додади Коментар</button>
                                 </div>
                             @else
                                 <div class="form-group">
                                     <a href="/login">
-                                        <button class="btn btn-primary" type="button"> Add Comment</button>
+                                        <button class="btn btn-primary" type="button"> Додади Коментар</button>
                                     </a>
                                 </div>
                             @endif
